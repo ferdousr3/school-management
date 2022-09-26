@@ -1,52 +1,34 @@
+import React from "react";
+import { Box, Grid, Container, useTheme } from "@mui/material";
+// import data from "../../data/data";
+import FooterFirstPart from "./FooterFirstPart";
+import FooterSecondPart from "./FooterSecondPart";
+import FooterThirdPart from "./FooterThirdPart";
 
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
-
-function Copyright() {
+const Footer: React.FC<{}> = () => {
+  const theme = useTheme();
   return (
-    <Typography variant="body2" color="text.secondary">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-export default function StickyFooter() {
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }}
-    >
-    
-     
-      <Box
-        component="footer"
-        sx={{
-          py: 3,
-          px: 2,
-          mt: "auto",
-          backgroundColor: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
-        }}
-      >
-        <Container maxWidth="sm">
-          <Typography variant="body1">
-            My sticky footer can be found here.
-          </Typography>
-          <Copyright />
+    <>
+      <Box sx={{ bgcolor: theme.extraColor.liteGray, pt: 4 }}>
+        <Container>
+          <Grid container spacing={4} >
+            <Grid item xs={12} md={6} lg={3} xl={3}>
+              <FooterFirstPart />
+            </Grid>
+            <Grid item xs={12} md={6} lg={3} xl={3} >
+              <FooterSecondPart />
+            </Grid>
+            <Grid item xs={12} md={6} lg={3} xl={3}>
+              <FooterThirdPart />
+            </Grid>
+            <Grid item xs={12} md={6} lg={3} xl={3}>
+              4
+            </Grid>
+          </Grid>
         </Container>
       </Box>
-    </Box>
+    </>
   );
-}
+};
+
+export default Footer;

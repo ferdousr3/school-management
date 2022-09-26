@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 const Home: React.FC<{}> = () => {
   return (
     <>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main">
         <Typography>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
           unde fugit veniam eius, perspiciatis sunt? Corporis qui ducimus

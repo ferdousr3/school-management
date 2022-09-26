@@ -1,17 +1,15 @@
-import Header from "./common/Header/Header";
-import Footer from "./common/Footer/Footer"
+import { BrowserRouter } from "react-router-dom";
+import { ThemeConfig } from "./config/theme.config";
+import AppRoutes from "./Routes/AppRoutes";
 
 function App() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
-      <main></main>
-
-      <footer>
-        <Footer />
-      </footer>
+      <BrowserRouter>
+        <ThemeConfig>
+          <AppRoutes />
+        </ThemeConfig>
+      </BrowserRouter>
     </>
   );
 }

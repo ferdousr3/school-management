@@ -6,14 +6,14 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import Logo from "../../assets/logo/logo.png";
+import data from "../../data/data";
+import RouteLink from "./RouteLink";
+import { useTheme } from "@mui/material";
 
 interface Props {
   /**
@@ -24,7 +24,6 @@ interface Props {
 }
 
 const drawerWidth = 280;
-const navItems = ["Home", "About", "Contact"];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
@@ -33,7 +32,7 @@ export default function DrawerAppBar(props: Props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const theme = useTheme();
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Box
@@ -43,20 +42,26 @@ export default function DrawerAppBar(props: Props) {
           alignItems: "center",
           justifyContent: "center",
           my: 2,
+          bgcolor: "palette.primary.main",
         }}
       >
-        <img src={Logo} alt="School" height="40px" width="40px" />
+        <img src={data.logoImage} alt="School" height="40px" width="40px" />
         <Typography variant="h6" sx={{ ml: 1 }}>
-          FGMP High School
+          {data.schoolDetails.shortName}
         </Typography>
       </Box>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+        {data.navItems.map((item) => (
+          <ListItem key={item?.text} disablePadding>
+            <Box
+              sx={{
+                textAlign: "center",
+                margin: "0 auto",
+              }}
+            >
+              <RouteLink to={item.path}>{item.text}</RouteLink>
+            </Box>
           </ListItem>
         ))}
       </List>
@@ -71,9 +76,15 @@ export default function DrawerAppBar(props: Props) {
 
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
-      <AppBar component="nav" sx={{ py: 1 }}>
+      <AppBar component="nav" sx={{ bgcolor: theme.extraColor.white,boxShadow:'none' }}>
         <Container>
-          <Toolbar>
+          <Toolbar
+            sx={{
+              py: 1,
+              bgcolor: theme.palette.primary.main,
+              borderRadius: 1.5,
+            }}
+          >
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -88,27 +99,30 @@ export default function DrawerAppBar(props: Props) {
                 component="div"
                 sx={{ display: "flex", alignItems: "center" }}
               >
-                <img src={Logo} alt="School" height="60px" width="60px" />
+                <img
+                  src={data.logoImage}
+                  alt="School"
+                  height="60px"
+                  width="60px"
+                />
                 <Box
                   component="div"
                   sx={{ ml: 1, display: { xs: "none", sm: "block" } }}
                 >
                   <Typography variant="h6">
-                    FULBARI GM PILOT HIGH SCHOOL
+                    {data.schoolDetails.name}
                   </Typography>
-                  <Typography
-                    sx={{ mt: -1,  }}
-                  >
-                    Fulbari, Dinajpur
+                  <Typography sx={{ mt: -1 }}>
+                    {data.schoolDetails.address}
                   </Typography>
                 </Box>
               </Box>
             </Box>
             <Box sx={{ display: { xs: "none", md: "block" } }}>
-              {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#fff" }}>
-                  {item}
-                </Button>
+              {data.navItems.map((item) => (
+                <RouteLink key={item.text} to={item.path}>
+                  {item.text}
+                </RouteLink>
               ))}
             </Box>
             <Box sx={{ display: { md: "block" }, ml: 2 }}>
@@ -130,9 +144,12 @@ export default function DrawerAppBar(props: Props) {
           }}
           sx={{
             display: { xs: "block", md: "none" },
+
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              bgcolor: theme.palette.primary.main,
+              color: theme.extraColor.white,
             },
           }}
         >
