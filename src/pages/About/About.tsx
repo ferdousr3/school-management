@@ -1,8 +1,10 @@
 import React from "react";
+import PageTitle from "../../common/PageTitle/PageTitle";
 
 const About = () => {
   return (
     <>
+      <PageTitle title="About" />
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
       possimus nobis consectetur veritatis mollitia pariatur nam adipisci nihil,
       esse quas ex enim eveniet deleniti doloribus quaerat neque velit tempora

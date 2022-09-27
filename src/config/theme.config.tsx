@@ -10,7 +10,9 @@ export enum themePalette {
   GRAY = "#f6f6f6",
   GRAY_TITLE = "#333333",
   GRAY_TITLE_LITE = "#555555",
+  GRAY_TITLE_DARK = "#444444",
   BLACK_LINK = "#1e1e1e",
+  BORDER_COLOR="#e5e5e5",
   LIME = "#234957",
   ORANGE = "#e05a36",
   FONT_GLOBAL = "'Lato', sans-serif",
@@ -22,7 +24,9 @@ const theme = createTheme({
     liteGray: themePalette.GRAY,
     titleGray: themePalette.GRAY_TITLE,
     titleGrayLite: themePalette.GRAY_TITLE_LITE,
+    titleGrayDark: themePalette.GRAY_TITLE_DARK,
     linkBlack: themePalette.GRAY_TITLE,
+    borderColor: themePalette.BORDER_COLOR,
   },
 
   palette: {
@@ -50,6 +54,10 @@ const theme = createTheme({
       fontSize: "1rem",
       fontWeight: 400,
     },
+    heroTitle: {
+      color: themePalette.ORANGE,
+      fontWeight: 400,
+    },
   },
   components: {
     MuiButton: {
@@ -59,6 +67,7 @@ const theme = createTheme({
           boxShadow: "none",
           borderRadius: "2em",
           fontWeight: 700,
+          // padding:'.60rem 0rem',
         },
       },
     },

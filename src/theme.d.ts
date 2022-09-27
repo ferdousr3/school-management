@@ -10,6 +10,8 @@ declare module "@mui/material/styles" {
       titleGray: string;
       linkBlack: string;
       titleGrayLite: string;
+      titleGrayDark: string;
+      borderColor: string;
     };
   }
 
@@ -20,6 +22,8 @@ declare module "@mui/material/styles" {
       titleGray: React.CSSProperties["color"];
       linkBlack: React.CSSProperties["color"];
       titleGrayLite: React.CSSProperties["color"];
+      titleGrayDark: React.CSSProperties["color"];
+      borderColor: React.CSSProperties["color"];
     };
   }
 
@@ -27,12 +31,14 @@ declare module "@mui/material/styles" {
   interface TypographyVariants {
     footerTitle: React.CSSProperties;
     footerDetails: React.CSSProperties;
+    heroTitle: React.CSSProperties;
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
     footerTitle?: React.CSSProperties;
     footerDetails?: React.CSSProperties;
+    heroTitle?: React.CSSProperties;
   }
 }
 
@@ -41,6 +47,6 @@ declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     footerTitle: true;
     footerDetails: true;
-
+    heroTitle: true;
   }
 }

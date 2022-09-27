@@ -1,26 +1,28 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import type { LinkProps } from "react-router-dom";
-import { useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material";
 
 function RouteLink({ children, to, ...props }: LinkProps) {
-  const theme = useTheme();
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: true });
+  const RouterLink = styled(Link)(({ theme }) => ({
+    color: match ? theme.palette.secondary.main : theme.extraColor.white,
+    fontSize: "1rem",
+    fontWeight: 700,
+    textDecoration: "underline",
+    textDecorationColor: "rgba(35, 73, 87, 0.4)",
+    padding: " 0rem 1rem",
+    "&:hover": {
+      color: theme.palette.secondary.main,
+      transition: theme.transitions.create(["color", "hover"]),
+    },
+  }));
 
   return (
     <>
-      <Link
-        style={{
-          textDecoration: "none",
-          color: match ? theme.palette.secondary.main : theme.extraColor.white,
-          padding: " 0rem 1rem",
-          fontWeight: match ? 600 : 600,
-        }}
-        to={to}
-        {...props}
-      >
+      <RouterLink to={to} {...props}>
         {children}
-      </Link>
+      </RouterLink>
     </>
   );
 }

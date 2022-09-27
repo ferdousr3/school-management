@@ -14,7 +14,7 @@ const AppRoutes = () => {
       <header>
         <Header />
       </header>
-      <Box component="main" sx={{ pt: { xs: "5rem", md: "5rem" }, pb: 2 }}>
+      <Box component="main" sx={{ pt: { xs: "5rem", md: "5rem" }, pb: '4rem' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

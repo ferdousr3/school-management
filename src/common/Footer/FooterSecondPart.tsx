@@ -14,7 +14,7 @@ const FooterSecondPart = () => {
   return (
     <>
       <Box sx={{ pt: ".75rem" }}>
-        <Typography variant="footerTitle">QUICK LINKS</Typography>
+        <Typography variant="footerTitle" component='h2' >QUICK LINKS</Typography>
         <Box sx={{ pt: '2.5rem' }}>
           {data.footerLink.map((item) => (
             <ListItem
