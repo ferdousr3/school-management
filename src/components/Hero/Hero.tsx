@@ -1,6 +1,7 @@
-import { Box, Container, Typography, useTheme, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Container, Typography, useTheme } from "@mui/material";
+
 import HeroImage from "../../assets/hero/hero.jpg";
+import MyButton from "../../common/MyButton/MyButton";
 
 const Hero = () => {
   const theme = useTheme();
@@ -53,7 +54,7 @@ const Hero = () => {
                 color: theme.extraColor.titleGray,
                 textTransform: "uppercase",
                 mt: {
-                  md: "-1.25rem",
+                  md: "-1.45rem",
                 },
               }}
             >
@@ -64,9 +65,9 @@ const Hero = () => {
                 fontSize: "1.5rem",
                 fontWeight: 700,
                 color: theme.extraColor.titleGray,
-                // mt: {
-                //   md: "-.75rem",
-                // },
+                mt: {
+                  md: "-.25rem",
+                },
               }}
             >
               We have passed 100 years!
@@ -80,19 +81,9 @@ const Hero = () => {
             >
               For Achievement
             </Typography>
-            <Link to='/login' >
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{
-                  fontSize: "1rem !important",
-                  textTransform: "uppercase !important",
-                  textDecoration:'none'
-                }}
-              >
-                Registration Now
-              </Button>
-            </Link>
+            <Box sx={{ mt: 2 }}>
+              <MyButton text="Registration Now" url="login" />
+            </Box>
           </Box>
         </Container>
       </Box>
