@@ -1,9 +1,8 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import { Box,Typography } from "@mui/material";
 import data from "../../data/data";
 
 const FooterFirstPart: React.FC<{}> = () => {
-  
   return (
     <>
       <Box>
@@ -23,7 +22,7 @@ const FooterFirstPart: React.FC<{}> = () => {
             </Typography>
           </Box>
         </Box>
-        <Typography variant="footerDetails" component="p" sx={{ pt: 2 }}>
+        <Typography variant="description" component="p" sx={{ pt: 2 }}>
           Since ancient times, Dinajpur district has been politically,
           economically, socially and educationally underdeveloped compared to
           other regions.

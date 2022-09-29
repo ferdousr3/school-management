@@ -12,7 +12,7 @@ export enum themePalette {
   GRAY_TITLE_LITE = "#555555",
   GRAY_TITLE_DARK = "#444444",
   BLACK_LINK = "#1e1e1e",
-  BORDER_COLOR="#e5e5e5",
+  BORDER_COLOR = "#e5e5e5",
   LIME = "#234957",
   ORANGE = "#e05a36",
   FONT_GLOBAL = "'Lato', sans-serif",
@@ -49,7 +49,7 @@ const theme = createTheme({
       textTransform: "uppercase",
       fontWeight: 700,
     },
-    footerDetails: {
+    description: {
       color: themePalette.GRAY_TITLE_LITE,
       fontSize: "1rem",
       fontWeight: 400,
@@ -57,6 +57,11 @@ const theme = createTheme({
     heroTitle: {
       color: themePalette.ORANGE,
       fontWeight: 400,
+    },
+    sectionTitle: {
+      color: themePalette.GRAY_TITLE,
+      fontWeight: 700,
+      fontSize: "1.875rem",
     },
   },
   components: {

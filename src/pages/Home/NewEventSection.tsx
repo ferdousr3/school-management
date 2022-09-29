@@ -21,7 +21,7 @@ const NewEventSection = () => {
             lg={6}
             sx={{ backgroundImage: `url(${EventBg})`, py: "4rem" }}
           >
-            <Box sx={{ pl: "15%" }}>
+            <Box sx={{ pl: { sm: "15%", xs: "5%" } }}>
               <Typography component="h1" sx={styles.eventTitle}>
                 New Events
               </Typography>
@@ -113,7 +113,7 @@ const NewEventSection = () => {
                     <Typography sx={styles.eventPlaceRight}>
                       <PlaceIcon sx={styles.eventIcon} /> {event.place}
                     </Typography>
-                    <CustomLink url='/login' text='Join Event' />
+                    <CustomLink url="/login" text="Join Event" />
                   </Box>
                 </Grid>
               </Grid>

@@ -1,12 +1,14 @@
 import Logo from "../assets/logo/logo.png";
+import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
+import BeachAccessIcon from "@mui/icons-material/BeachAccess";
+import AlbumIcon from "@mui/icons-material/Album";
 
 const data = {
   logoImage: Logo,
   navItems: [
     { text: "Home", path: "/" },
     { text: "About", path: "/about" },
-    { text: "Login", path: "/login" },
-    { text: "Sign Up", path: "/signUp" },
+    { text: "Contact", path: "/contact" },
   ],
 
   schoolDetails: {
@@ -27,7 +29,7 @@ const data = {
     },
     {
       id: 3,
-      text: "Login",
+      text: "sign",
       path: "/login",
     },
     {
@@ -37,8 +39,8 @@ const data = {
     },
     {
       id: 5,
-      text: " Release Status",
-      path: "/",
+      text: " Contact",
+      path: "/contact",
     },
   ],
   events: [
@@ -73,6 +75,46 @@ const data = {
       status: "coming Soon",
     },
   ],
+  about: {
+    description: `Since ancient times, Dinajpur district has been politically, economically, socially and educationally underdeveloped compared to other regions. Dinajpur has been situated as an unbroken township since ancient times at the north-western edge of Barendra land. We get a lot of information about the educational system of Dinajpur during the Hindu period. Although there are no obstacles in the field of education for the Brahmins of Dinajpur, a large population here has been out of formal education for a long time due to the fact that the local tribals are considered very low-born.`,
+    items: [
+      {
+        id: 1,
+        details: "Better Care ",
+      },
+      {
+        id: 2,
+        details: "Better Teaching Method ",
+      },
+      {
+        id: 3,
+        details: "Every Month Parents Meeting ",
+      },
+    ],
+    target: [
+      {
+        id: 1,
+        icon: <CrisisAlertIcon />,
+        title: "Our Mission",
+        description:
+          "Since ancient times, Dinajpur district has been politically, economically, socially and educationally.",
+      },
+      {
+        id: 2,
+        icon: <BeachAccessIcon />,
+        title: "Our Vision",
+        description:
+          "Since ancient times, Dinajpur district has been politically, economically, socially and educationally.",
+      },
+      {
+        id: 3,
+        icon: <AlbumIcon />,
+        title: "Our Goal",
+        description:
+          "Since ancient times, Dinajpur district has been politically, economically, socially and educationally.",
+      },
+    ],
+  },
 };
 
 export default data;

@@ -1,4 +1,4 @@
-import { ThemeOptions } from "@mui/material/styles";
+import "@mui/material/styles";
 import React from "react";
 
 declare module "@mui/material/styles" {
@@ -30,15 +30,17 @@ declare module "@mui/material/styles" {
   // for typography overwrite
   interface TypographyVariants {
     footerTitle: React.CSSProperties;
-    footerDetails: React.CSSProperties;
+    description: React.CSSProperties;
     heroTitle: React.CSSProperties;
+    sectionTitle: React.CSSProperties;
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
     footerTitle?: React.CSSProperties;
-    footerDetails?: React.CSSProperties;
+    description?: React.CSSProperties;
     heroTitle?: React.CSSProperties;
+    sectionTitle?: React.CSSProperties;
   }
 }
 
@@ -46,12 +48,11 @@ declare module "@mui/material/styles" {
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     footerTitle: true;
-    footerDetails: true;
+    description: true;
     heroTitle: true;
+    sectionTitle: true;
   }
 }
-
-
 
 declare function useNavigate(): NavigateFunction;
 
