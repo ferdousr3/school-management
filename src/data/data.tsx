@@ -2,9 +2,14 @@ import Logo from "../assets/logo/logo.png";
 import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import AlbumIcon from "@mui/icons-material/Album";
-
+import PinDropRoundedIcon from "@mui/icons-material/PinDropRounded";
+import CallRoundedIcon from "@mui/icons-material/CallRounded";
+import MarkEmailUnreadRoundedIcon from "@mui/icons-material/MarkEmailUnreadRounded";
+import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 const data = {
   logoImage: Logo,
+  phoneNumber: "03-0134024567-1",
+  address: "Street 21 York E Block 2101 France USA",
   navItems: [
     { text: "Home", path: "/" },
     { text: "About", path: "/about" },
@@ -115,6 +120,46 @@ const data = {
       },
     ],
   },
+  contactDetails: [
+    {
+      id: 1,
+      icon: <PinDropRoundedIcon />,
+      text: "Dhakamor, Fulbari",
+      text2: " Dinajpur",
+    },
+    {
+      id: 2,
+      icon: <MarkEmailUnreadRoundedIcon />,
+      text: "Example@gmail.com",
+      text2: " demo@gmail.com",
+    },
+    {
+      id: 3,
+      icon: <CallRoundedIcon />,
+      text: "03-0134024567-1",
+      text2: "03-015488567-2",
+    },
+  ],
+  social: [
+    {
+      id: 1,
+      icon: <FaFacebookF />,
+      title: "Facebook",
+      link: "https://www.facebook.com",
+    },
+    {
+      id: 2,
+      icon: <FaLinkedinIn />,
+      title: "Linkedin",
+      link: "https://www.Linkedin.com",
+    },
+    {
+      id: 3,
+      icon: <FaTwitter />,
+      title: "Twitter",
+      link: "https://www.twitter.com",
+    },
+  ],
 };
 
 export default data;

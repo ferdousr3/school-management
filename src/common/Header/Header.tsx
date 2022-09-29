@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import data from "../../data/data";
 import RouteLink from "./RouteLink";
 import { useTheme } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   /**
@@ -32,6 +33,7 @@ export default function DrawerAppBar(props: Props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const navigate = useNavigate();
   const theme = useTheme();
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -65,7 +67,11 @@ export default function DrawerAppBar(props: Props) {
           </ListItem>
         ))}
       </List>
-      <Button variant="contained" color="secondary">
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => navigate("/login")}
+      >
         Sign in
       </Button>
     </Box>
@@ -76,7 +82,10 @@ export default function DrawerAppBar(props: Props) {
 
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
-      <AppBar component="nav" sx={{ bgcolor: theme.extraColor.white,boxShadow:'none' }}>
+      <AppBar
+        component="nav"
+        sx={{ bgcolor: theme.extraColor.white, boxShadow: "none" }}
+      >
         <Container>
           <Toolbar
             sx={{
@@ -126,7 +135,11 @@ export default function DrawerAppBar(props: Props) {
               ))}
             </Box>
             <Box sx={{ display: { md: "block" }, ml: 2 }}>
-              <Button variant="contained" color="secondary">
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => navigate("/login")}
+              >
                 Sign In
               </Button>
             </Box>

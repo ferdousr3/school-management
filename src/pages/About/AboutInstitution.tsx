@@ -12,7 +12,8 @@ import {
 import data from "../../data/data";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { styles } from "./Styles/AboutInstitutionStyles";
-import aboutInst from '../../assets/event/openbooks.jpg'
+// import aboutInst from '../../assets/event/openbooks.jpg'
+import NewBooks from '../../assets/about/newbooks1.svg'
 
 const AboutInstitution = () => {
   const theme = useTheme()
@@ -49,7 +50,7 @@ const AboutInstitution = () => {
               </List>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <img src={aboutInst} alt="about us" width='100%' height='100%' />
+              <img src={NewBooks} alt="about us" width="100%" height="100%" />
             </Grid>
           </Grid>
         </Container>

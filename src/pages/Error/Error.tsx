@@ -7,6 +7,7 @@ import CustomLink from "../../common/CustomLink/CustomLink";
 
 const Error = () => {
   const theme = useTheme();
+
   return (
     <>
       <PageTitle title="404" />
@@ -17,7 +18,6 @@ const Error = () => {
             <Grid
               item
               xs={12}
-              
               justifyContent="center"
               sx={{ margin: "0px auto" }}
             >
@@ -40,7 +40,7 @@ const Error = () => {
                 <img src={ErrorPic} alt="404 pic" width="100%" />
               </Box>
             </Grid>
-            <Grid item xs={12} >
+            <Grid item xs={12}>
               <Box
                 sx={{
                   textAlign: "center",
@@ -53,7 +53,7 @@ const Error = () => {
                   sx={{
                     color: theme.palette.primary.main,
                     fontSize: "1.1rem",
-                    fontWeight: 700,
+                    fontWeight: 400,
                     pt: 0,
                     mt: "-8px",
                   }}
