@@ -6,6 +6,10 @@ import PinDropRoundedIcon from "@mui/icons-material/PinDropRounded";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
 import MarkEmailUnreadRoundedIcon from "@mui/icons-material/MarkEmailUnreadRounded";
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import PersonIcon from "@mui/icons-material/Person";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+
 const data = {
   logoImage: Logo,
   phoneNumber: "03-0134024567-1",
@@ -161,6 +165,27 @@ const data = {
       link: "https://www.twitter.com",
     },
   ],
+  dashboard: [
+    {
+      id: 1,
+      text: "Profile",
+      icon: <PersonIcon />,
+      path: "",
+    },
+    {
+      id: 2,
+      text: "banking",
+      icon: <AccountBalanceIcon />,
+      path: "banking",
+    },
+    {
+      id: 3,
+      text: "users",
+      icon: <PeopleAltIcon />,
+      path: "allUsers",
+    },
+  ],
+  
 };
 
 export default data;

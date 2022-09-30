@@ -8,6 +8,8 @@ import Contact from "../pages/Contact/Contact";
 import Dashboard from "../pages/Dashboard/Layout/Dashboard";
 import MainLayout from "./MainLyout";
 import DUserProfile from "../pages/Dashboard/DUserProfile/DUserProfile";
+import DAllUsers from "../pages/Dashboard/DAllUsers/DAllUsers";
+import DBanking from "../pages/Dashboard/DBanking/DBanking";
 
 const AppRoutes = () => {
   return (
@@ -25,6 +27,8 @@ const AppRoutes = () => {
         {/* Dashboard part start */}
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<DUserProfile />} />
+          <Route path="allUsers" element={<DAllUsers />} />
+          <Route path="banking" element={<DBanking />} />
         </Route>
         {/* Dashboard part end */}
 

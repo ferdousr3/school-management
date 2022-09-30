@@ -13,8 +13,14 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import data from "../../data/data";
 import RouteLink from "./RouteLink";
-import { useTheme } from "@mui/material";
+import { Avatar, ListItemIcon, Menu, MenuItem, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Settings from "@mui/icons-material/Settings";
+import Logout from "@mui/icons-material/Logout";
+import { PaperProps } from "./PaperProps";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../config/firebase.config";
+import { signOut } from "firebase/auth";
 
 interface Props {
   /**
@@ -27,14 +33,27 @@ interface Props {
 const drawerWidth = 280;
 
 export default function DrawerAppBar(props: Props) {
+  const [user] = useAuthState(auth);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const menuOpen = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const navigate = useNavigate();
   const theme = useTheme();
+  const handleLogOut = (): void => {
+    signOut(auth);
+  };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Box
@@ -54,7 +73,19 @@ export default function DrawerAppBar(props: Props) {
       </Box>
       <Divider />
       <List>
-        {data.navItems.map((item) => (
+        {data.navItems.slice(0, 3).map((item) => (
+          <ListItem key={item?.text} disablePadding>
+            <Box
+              sx={{
+                textAlign: "center",
+                margin: "0 auto",
+              }}
+            >
+              <RouteLink to={item.path}>{item.text}</RouteLink>
+            </Box>
+          </ListItem>
+        ))}
+        {data.navItems.slice(3, 4).map((item) => (
           <ListItem key={item?.text} disablePadding>
             <Box
               sx={{
@@ -67,13 +98,20 @@ export default function DrawerAppBar(props: Props) {
           </ListItem>
         ))}
       </List>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={() => navigate("/login")}
-      >
-        Sign in
-      </Button>
+
+      {user ? (
+        <Button variant="contained" color="secondary" onClick={handleLogOut}>
+         Sign Out
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => navigate("/login")}
+        >
+          Sign in
+        </Button>
+      )}
     </Box>
   );
 
@@ -82,6 +120,7 @@ export default function DrawerAppBar(props: Props) {
 
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
+      {/* // desktop navbar */}
       <AppBar
         component="nav"
         sx={{ bgcolor: theme.extraColor.white, boxShadow: "none" }}
@@ -128,20 +167,79 @@ export default function DrawerAppBar(props: Props) {
               </Box>
             </Box>
             <Box sx={{ display: { xs: "none", md: "block" } }}>
-              {data.navItems.map((item) => (
+              {data.navItems.slice(0, 3).map((item) => (
                 <RouteLink key={item.text} to={item.path}>
                   {item.text}
                 </RouteLink>
               ))}
+              {user && <RouteLink to="/dashboard">Dashboard</RouteLink>}
             </Box>
             <Box sx={{ display: { md: "block" }, ml: 2 }}>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => navigate("/login")}
-              >
-                Sign In
-              </Button>
+              {user ? (
+                <>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <IconButton
+                      onClick={handleClick}
+                      size="small"
+                      sx={{ ml: 2 }}
+                      aria-controls={menuOpen ? "account-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={menuOpen ? "true" : undefined}
+                    >
+                      <Avatar
+                        sx={{
+                          width: 32,
+                          height: 32,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {user?.displayName?.slice(0, 1)}
+                      </Avatar>
+                    </IconButton>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorEl}
+                    id="account-menu"
+                    open={menuOpen}
+                    onClose={handleClose}
+                    onClick={handleClose}
+                    PaperProps={PaperProps}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                  >
+                    <MenuItem>
+                      <Avatar /> {user?.displayName}
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem>
+                      <ListItemIcon>
+                        <Settings fontSize="small" />
+                      </ListItemIcon>
+                      Settings
+                    </MenuItem>
+                    <MenuItem onClick={handleLogOut}>
+                      <ListItemIcon>
+                        <Logout fontSize="small" />
+                      </ListItemIcon>
+                      Logout
+                    </MenuItem>
+                  </Menu>
+                </>
+              ) : (
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => navigate("/login")}
+                >
+                  Sign in
+                </Button>
+              )}
             </Box>
           </Toolbar>
         </Container>

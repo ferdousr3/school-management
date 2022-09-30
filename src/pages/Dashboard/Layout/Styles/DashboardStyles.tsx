@@ -84,6 +84,21 @@ const styles = sxStyles({
       },
     },
   }),
+  toolbar: (theme: Theme) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    px: [1],
+  }),
+  main: (theme: Theme) => ({
+    backgroundColor: (theme) =>
+      theme.palette.mode === "light"
+        ? theme.palette.grey[100]
+        : theme.palette.grey[900],
+    flexGrow: 1,
+    height: "100vh",
+    overflow: "auto",
+  }),
 });
 
 export { AppBar, Drawer, styles };
