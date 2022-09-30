@@ -2,8 +2,6 @@ import * as React from "react";
 import {
   Button,
   Box,
-  Checkbox,
-  Avatar,
   Grid,
   Typography,
   Container,
@@ -13,16 +11,17 @@ import {
   FormControl,
   IconButton,
   TextField,
-  FormControlLabel,
-  useTheme,
+  // useTheme,
+  Divider,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import CustomLink from "../../common/CustomLink/CustomLink";
 import PageTitle from "../../common/PageTitle/PageTitle";
+import { styles } from "./Styles/SignUpStyles";
 
 interface State {
   password: string;
@@ -33,7 +32,7 @@ export default function SignUp() {
     password: "",
     showPassword: false,
   });
-  const theme = useTheme();
+  // const theme = useTheme();
   const handleChange =
     (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setValues({ ...values, [prop]: event.target.value });
@@ -65,28 +64,22 @@ export default function SignUp() {
     <Container component="div" maxWidth="xs">
       <PageTitle title="Sign Up " />
       <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          border: {
-            sm: `1px solid ${theme.extraColor.borderColor}`,
-          },
-          padding: {
-            sm: "1rem 2rem",
-          },
-        }}
+        sx={styles.main}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <PersonAddIcon
+          sx={styles.icon}
+        />
         <Typography component="h1" variant="h5">
           Sign up with
         </Typography>
         {/* social login component */}
         <SocialLogin />
-        or
+        <Box
+          sx={styles.orSection}
+        >
+          <Divider sx={{ width: "40%",mr:2 }} /> or
+          <Divider sx={{ width: "40%",ml:2 }} />
+        </Box>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -141,18 +134,12 @@ export default function SignUp() {
                 />
               </FormControl>
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
           </Grid>
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 3, mb: 2, py: 1.5 }}
           >
             Sign Up
           </Button>

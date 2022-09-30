@@ -1,9 +1,10 @@
+import Box from '@mui/material/Box';
 import './Loadings.css';
 
 const Loadings = () => {
   return (
     <>
-      <div className="flex justify-center">
+      <Box sx={{display:'flex',justifyContent:'center', alignItems:'center'}}>
         <div className="loadingio-spinner-spinner-w3kwwsv7i0k">
           <div className="ldio-ra13xgbwmkd">
             <div></div>
@@ -21,7 +22,7 @@ const Loadings = () => {
             <div></div>
           </div>
         </div>
-      </div>
+      </Box>
     </>
   );
 };

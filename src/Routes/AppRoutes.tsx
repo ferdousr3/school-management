@@ -10,6 +10,7 @@ import MainLayout from "./MainLyout";
 import DUserProfile from "../pages/Dashboard/DUserProfile/DUserProfile";
 import DAllUsers from "../pages/Dashboard/DAllUsers/DAllUsers";
 import DBanking from "../pages/Dashboard/DBanking/DBanking";
+import RequireAuth from "../auth/RequireAuth";
 
 const AppRoutes = () => {
   return (
@@ -25,7 +26,14 @@ const AppRoutes = () => {
         </Route>
         {/* main part end */}
         {/* Dashboard part start */}
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
           <Route index element={<DUserProfile />} />
           <Route path="allUsers" element={<DAllUsers />} />
           <Route path="banking" element={<DBanking />} />

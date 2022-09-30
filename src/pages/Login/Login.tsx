@@ -2,8 +2,6 @@ import * as React from "react";
 import {
   Button,
   Box,
-  Checkbox,
-  Avatar,
   Grid,
   Typography,
   Container,
@@ -13,8 +11,9 @@ import {
   FormControl,
   IconButton,
   TextField,
-  FormControlLabel,
-  useTheme,
+
+  Divider
+  // useTheme,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Visibility from "@mui/icons-material/Visibility";
@@ -22,6 +21,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import CustomLink from "../../common/CustomLink/CustomLink";
 import PageTitle from "../../common/PageTitle/PageTitle";
+import { styles } from "./Styles/LoginStyles";
 
 interface State {
   password: string;
@@ -33,7 +33,7 @@ export default function Login() {
     password: "",
     showPassword: false,
   });
-  const theme = useTheme();
+  // const theme = useTheme();
   const handleChange =
     (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setValues({ ...values, [prop]: event.target.value });
@@ -63,29 +63,17 @@ export default function Login() {
   return (
     <Container component="div" maxWidth="xs">
       <PageTitle title="Login " />
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          border: {
-            sm: `1px solid ${theme.extraColor.borderColor}`,
-          },
-          padding: {
-            sm: "1rem 2rem",
-          },
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
+      <Box sx={styles.main}>
+        <LockOutlinedIcon sx={styles.icon} />
         <Typography component="h1" variant="h5">
           Sign in with
         </Typography>
         {/* social login component */}
         <SocialLogin />
-        or
+        <Box sx={styles.orSection}>
+          <Divider sx={{ width: "40%", mr: 2 }} /> or
+          <Divider sx={{ width: "40%", ml: 2 }} />
+        </Box>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
@@ -121,10 +109,6 @@ export default function Login() {
               label="Password"
             />
           </FormControl>
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
           <Button
             type="submit"
             fullWidth
