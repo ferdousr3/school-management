@@ -13,7 +13,7 @@ import data from "../../data/data";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { styles } from "./Styles/AboutInstitutionStyles";
 // import aboutInst from '../../assets/event/openbooks.jpg'
-import NewBooks from '../../assets/about/newbooks1.svg'
+import NewBooks from '../../assets/about/newBooks1.png'
 
 const AboutInstitution = () => {
   const theme = useTheme()
@@ -22,7 +22,7 @@ const AboutInstitution = () => {
       <Box sx={{ py: { sm: "4rem", xs: "2rem" } }}>
         <Container>
           <Grid container spacing={4}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} md={6}>
               <Typography variant="sectionTitle" component="h1">
                 About Our Institution
               </Typography>
@@ -49,8 +49,8 @@ const AboutInstitution = () => {
                 ))}
               </List>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <img src={NewBooks} alt="about us" width="100%" height="100%" />
+            <Grid item xs={12} md={6}  justifyContent='center' >
+              <img src={NewBooks} alt="about us" width="90%" height="90%" />
             </Grid>
           </Grid>
         </Container>

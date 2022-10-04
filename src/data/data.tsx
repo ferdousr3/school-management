@@ -1,4 +1,5 @@
 import Logo from "../assets/logo/logo.png";
+import Logo2 from "../assets/logo/logo2.png";
 import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import AlbumIcon from "@mui/icons-material/Album";
@@ -11,7 +12,13 @@ import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 
 const data = {
+  schoolDetails: {
+    name: "GreekCode",
+    shortName: "GreekCode",
+    address: "Online Courses",
+  },
   logoImage: Logo,
+  logoImage2: Logo2,
   phoneNumber: "03-0134024567-1",
   address: "Street 21 York E Block 2101 France USA",
   navItems: [
@@ -21,11 +28,6 @@ const data = {
     { text: "Dashboard", path: "/dashboard" },
   ],
 
-  schoolDetails: {
-    name: "FULBARI GM PILOT HIGH SCHOOL",
-    shortName: "FGMP High School",
-    address: "Fulbari, Dinajpur",
-  },
   footerLink: [
     {
       id: 1,
@@ -61,7 +63,7 @@ const data = {
       month: "dec",
       time: "10:00 - 16.00 ",
       organizer: "School Comity",
-      place: "Dhakamor, Fulbari, Dinajpur",
+      place: " Street 21 York  France USA",
       status: "coming Soon",
     },
     {
@@ -71,7 +73,7 @@ const data = {
       month: "dec",
       time: "10:00  - 12:10 ",
       organizer: "School Comity",
-      place: "Dhakamor, Fulbari, Dinajpur",
+      place: " Street 21 York  France USA",
       status: "coming Soon",
     },
     {
@@ -81,7 +83,7 @@ const data = {
       month: "dec",
       time: "12:30 - 16:00  ",
       organizer: "School Comity",
-      place: "Dhakamor, Fulbari, Dinajpur",
+      place: " Street 21 York  France USA",
       status: "coming Soon",
     },
   ],
@@ -185,7 +187,6 @@ const data = {
       path: "allUsers",
     },
   ],
-  
 };
 
 export default data;

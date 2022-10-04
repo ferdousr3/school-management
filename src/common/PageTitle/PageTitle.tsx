@@ -4,7 +4,7 @@ const PageTitle = ({ title }: { title: string }) => {
   return (
     <>
       <Helmet>
-        <title>{title} - FGMP High School </title>
+        <title>{title} - Greek Code </title>
       </Helmet>
     </>
   );

@@ -7,6 +7,7 @@ import {
   styled,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import data from "../../data/data";
 
 const FooterLastPart = () => {
   const theme = useTheme();
@@ -40,7 +41,7 @@ const FooterLastPart = () => {
               >
                 {"© All right reserved  "}
                 <span>{new Date().getFullYear()} - </span>
-                <RouterLink to="/">FGMP High School</RouterLink>
+                <RouterLink to="/">{data.schoolDetails.name}</RouterLink>
               </Typography>
             </Grid>
             <Grid
@@ -60,7 +61,7 @@ const FooterLastPart = () => {
                 }}
               >
                 {"Powered by "}
-                <RouterLink to="/">Dapplesoft</RouterLink>
+                <RouterLink to="/">Greek Team</RouterLink>
               </Typography>
             </Grid>
           </Grid>

@@ -1,46 +1,16 @@
-import { Box, Container, Typography, useTheme } from "@mui/material";
-
-import HeroImage from "../../assets/hero/hero.jpg";
+import { Box, Container, Typography} from "@mui/material";
 import MyButton from "../../common/MyButton/MyButton";
+import { styles } from "./styles/HeroStyles";
 
 const Hero = () => {
-  const theme = useTheme();
   return (
     <>
       <Box
-        sx={{
-          backgroundImage: `url(${HeroImage})`,
-          backgroundSize: {
-            xl: "cover",
-            lg: "unset",
-          },
-          backgroundRepeat: "no-repeat ",
-          backgroundPosition: {
-            lg: "center  ",
-            md: "center center",
-            sm: "center center",
-            xs: "center center ",
-          },
-        }}
-      >
+        sx={styles.heroMain}>
         <Container>
           <Box
             component="div"
-            sx={{
-              maxWidth: {
-                lg: "45rem",
-                md: "40rem",
-                sm: "30rem",
-              },
-              // border: "1px solid",
-              textAlign: "center",
-              py: {
-                sm: "2rem",
-                md: "3rem",
-                lg: "6rem",
-                xs:'1rem'
-              },
-            }}
+            sx={styles.heroMainContainer}
           >
             <Typography
               variant="heroTitle"
@@ -49,38 +19,19 @@ const Hero = () => {
               100+
             </Typography>
             <Typography
-              sx={{
-                fontSize: { xs: "1.5rem", sm: "3.75rem" },
-                fontWeight: 700,
-                color: theme.extraColor.titleGray,
-                textTransform: "uppercase",
-                mt: {
-                  md: "-1.45rem",
-                },
-              }}
+              sx={styles.heroSecondTitle}
             >
-              Alumni Events
+              staff teaching
             </Typography>
             <Typography
-              sx={{
-                fontSize: "1.5rem",
-                fontWeight: 700,
-                color: theme.extraColor.titleGray,
-                mt: {
-                  md: "-.25rem",
-                },
-              }}
+              sx={styles.heroThirdTitle}
             >
-              We have passed 100 years!
+              Courses & Discussing Topics Online
             </Typography>
             <Typography
-              sx={{
-                fontSize: "1.25rem",
-                fontWeight: 400,
-                color: theme.palette.secondary.main,
-              }}
+              sx={styles.heroFourthTitle}
             >
-              For Achievement
+              For Potential & Achievement
             </Typography>
             <Box sx={{ mt: 2 }}>
               <MyButton text="Registration Now" url="login" />

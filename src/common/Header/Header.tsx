@@ -101,7 +101,7 @@ export default function DrawerAppBar(props: Props) {
 
       {user ? (
         <Button variant="contained" color="secondary" onClick={handleLogOut}>
-         Sign Out
+          Sign Out
         </Button>
       ) : (
         <Button
@@ -155,12 +155,24 @@ export default function DrawerAppBar(props: Props) {
                 />
                 <Box
                   component="div"
-                  sx={{ ml: 1, display: { xs: "none", sm: "block" } }}
+                  sx={{
+                    ml: 1,
+                    display: {
+                      xs: "none",
+                      sm: "block",
+                    },
+                  }}
                 >
-                  <Typography variant="h6">
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontSize: "1.5rem",
+                      fontWeight: "900",
+                    }}
+                  >
                     {data.schoolDetails.name}
                   </Typography>
-                  <Typography sx={{ mt: -1 }}>
+                  <Typography sx={{ mt: -1, fontSize: ".875rem" }}>
                     {data.schoolDetails.address}
                   </Typography>
                 </Box>
