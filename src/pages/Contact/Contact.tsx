@@ -26,7 +26,7 @@ const Contact = () => {
               Contact Information:
             </Typography>
             <Typography component="h6" sx={styles.contactLeftSubTitle}>
-              Lorem ipsum dolor sit amet, consectetur adipisici elit, sed
+             Arif ipsum dolor sit amet, consectetur adipisici elit, sed
               eiusmod tempor incidunt ut labore et dolore magna aliqua invideo
               miror magis.
             </Typography>
