@@ -24,6 +24,7 @@ const data = {
   navItems: [
     { text: "Home", path: "/" },
     { text: "About", path: "/about" },
+    { text: "Blog", path: "/blog" },
     { text: "Contact", path: "/contact" },
     { text: "Dashboard", path: "/dashboard" },
   ],
