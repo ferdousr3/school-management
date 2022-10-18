@@ -1,33 +1,27 @@
-import * as React from "react";
-import {
-  Avatar,
-  ListItemIcon,
-  Menu,
-  MenuItem,
-  useTheme,
-  Box,
-  AppBar,
-  Button,
-  Container,
-  Divider,
-  Drawer,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
 import Logout from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import Settings from "@mui/icons-material/Settings";
+import {
+  AppBar, Avatar, Box, Button,
+  Container,
+  Divider,
+  Drawer,
+  IconButton, ListItemIcon,
+  Menu,
+  MenuItem, Toolbar,
+  Typography, useTheme
+} from "@mui/material";
 import { signOut } from "firebase/auth";
+import * as React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../config/firebase.config";
 import data from "../../data/data";
 import DrawerMenu from "./DrawerMenu";
+import HeaderTop from "./HeaderTop";
 import { PaperProps } from "./PaperProps";
 import RouteLink from "./RouteLink";
 import { styles } from "./Styles/HeaderStyles";
-import HeaderTop from "./HeaderTop";
 
 interface Props {
   /**
@@ -77,7 +71,6 @@ export default function DrawerAppBar(props: Props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-    
 
   return (
     <>
@@ -100,6 +93,7 @@ export default function DrawerAppBar(props: Props) {
               >
                 <MenuIcon />
               </IconButton>
+
               <Box
                 component="div"
                 sx={{ flexGrow: 1, display: { sm: "block" } }}
@@ -140,7 +134,7 @@ export default function DrawerAppBar(props: Props) {
                 </Box>
               </Box>
               <Box sx={{ display: { xs: "none", md: "block" } }}>
-                {data.navItems.slice(0, 3).map((item, index) => (
+                {data.navItems.slice(0, 4).map((item, index) => (
                   <RouteLink key={index} to={item.path}>
                     {item.text}
                   </RouteLink>

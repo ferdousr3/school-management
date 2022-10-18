@@ -11,6 +11,7 @@ import DUserProfile from "../pages/Dashboard/DUserProfile/DUserProfile";
 import DAllUsers from "../pages/Dashboard/DAllUsers/DAllUsers";
 import DBanking from "../pages/Dashboard/DBanking/DBanking";
 import RequireAuth from "../auth/RequireAuth";
+import Blogs from "../pages/Blogs/Blogs";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />

@@ -1,8 +1,8 @@
-import React from "react";
-import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import ForwardToInboxRoundedIcon from "@mui/icons-material/ForwardToInboxRounded";
-import { useNavigate } from "react-router-dom";
-import { useTheme, Container, Box } from "@mui/material";
+import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
+import React from "react";
+// import { useNavigate } from "react-router-dom";
+import { Box, Container } from "@mui/material";
 import { styles } from "./Styles/HeaderStyles";
 
 // type HeaderTopProps = {
@@ -11,7 +11,7 @@ import { styles } from "./Styles/HeaderStyles";
 
 const HeaderTop: React.FC = () => {
   // const navigate = useNavigate();
-  const theme = useTheme();
+  // const theme = useTheme();
 
   return (
     <>
