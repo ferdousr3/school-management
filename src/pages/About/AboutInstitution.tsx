@@ -34,8 +34,8 @@ const AboutInstitution = () => {
                 {data.about.description}
               </Typography>
               <List>
-                {data.about.items.map((item) => (
-                  <ListItem>
+                {data.about.items.map((item,index) => (
+                  <ListItem key={index}>
                     <ListItemIcon>
                       <CheckBoxIcon
                         sx={{ color: theme.palette.secondary.main }}
