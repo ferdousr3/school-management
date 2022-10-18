@@ -43,16 +43,16 @@ function DashboardContent() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
   const navigate = useNavigate();
   const theme = useTheme();
-const handleLogOut = (): void => {
-  signOut(auth);
-};
+  const handleLogOut = (): void => {
+    signOut(auth);
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar position="fixed" open={open}>

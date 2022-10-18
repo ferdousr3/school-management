@@ -9,7 +9,7 @@ function RouteLink({ children, to, ...props }: LinkProps) {
     color: match ? theme.palette.secondary.main : theme.extraColor.white,
     fontSize: "1rem",
     fontWeight: 700,
-    textDecoration: "underline",
+    textDecoration: "none",
     textDecorationColor: "rgba(35, 73, 87, 0.4)",
     padding: " 0rem 1rem",
     "&:hover": {
@@ -28,3 +28,4 @@ function RouteLink({ children, to, ...props }: LinkProps) {
 }
 
 export default RouteLink;
+
