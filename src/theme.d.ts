@@ -12,6 +12,7 @@ declare module "@mui/material/styles" {
       titleGrayLite: string;
       titleGrayDark: string;
       borderColor: string;
+      transparent: string;
     };
   }
 
@@ -24,6 +25,7 @@ declare module "@mui/material/styles" {
       titleGrayLite: React.CSSProperties["color"];
       titleGrayDark: React.CSSProperties["color"];
       borderColor: React.CSSProperties["color"];
+      transparent: React.CSSProperties["color"];
     };
   }
 

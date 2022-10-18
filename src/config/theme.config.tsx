@@ -7,6 +7,7 @@ type ThemeProp = {
 
 export enum themePalette {
   BG = "#ffffff",
+  BGCOLOR= "transparent",
   GRAY = "#f6f6f6",
   GRAY_TITLE = "#333333",
   GRAY_TITLE_LITE = "#555555",
@@ -21,6 +22,7 @@ export enum themePalette {
 const theme = createTheme({
   extraColor: {
     white: themePalette.BG,
+    transparent: themePalette.BGCOLOR,
     liteGray: themePalette.GRAY,
     titleGray: themePalette.GRAY_TITLE,
     titleGrayLite: themePalette.GRAY_TITLE_LITE,
@@ -37,6 +39,9 @@ const theme = createTheme({
     primary: {
       main: themePalette.LIME,
     },
+    // bgtrans: {
+    //   main: themePalette.TRANS,
+    // },
     secondary: {
       main: themePalette.ORANGE,
     },

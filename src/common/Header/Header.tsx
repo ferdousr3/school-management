@@ -63,7 +63,7 @@ export default function DrawerAppBar(props: Props) {
           alignItems: "center",
           justifyContent: "center",
           my: 2,
-          bgcolor: "palette.primary.main",
+          // bgcolor: "palette.primary.main",
         }}
       >
         <img src={data.logoImage} alt="School" height="40px" width="40px" />
@@ -119,11 +119,11 @@ export default function DrawerAppBar(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
+    <Box sx={{ display: "flex", alignItems: "center"}}>
       {/* // desktop navbar */}
       <AppBar
         component="nav"
-        sx={{ bgcolor: theme.extraColor.white, boxShadow: "none" }}
+        sx={{ bgcolor: theme.extraColor.transparent, boxShadow: "none"}}
       >
         <Container>
           <Toolbar
@@ -271,7 +271,7 @@ export default function DrawerAppBar(props: Props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              bgcolor: theme.palette.primary.main,
+              // bgcolor: theme.palette.primary.main,
               color: theme.extraColor.white,
             },
           }}
@@ -279,6 +279,8 @@ export default function DrawerAppBar(props: Props) {
           {drawer}
         </Drawer>
       </Box>
+      
+          
     </Box>
   );
 }
