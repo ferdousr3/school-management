@@ -37,6 +37,10 @@ const PageDetails = ({ title }: { title: string }) => {
               sm: "4rem",
               xs: "2rem",
             },
+            pt: {
+              sm: "8rem",
+              xs: "2rem",
+            },
           }}
         >
           <Typography

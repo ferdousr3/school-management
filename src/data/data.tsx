@@ -1,5 +1,6 @@
 import Logo from "../assets/logo/logo.png";
 import Logo2 from "../assets/logo/logo2.png";
+import Banner from "../assets/hero/banner.jpg";
 import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import AlbumIcon from "@mui/icons-material/Album";
@@ -28,7 +29,7 @@ const data = {
     { text: "Contact", path: "/contact" },
     { text: "Dashboard", path: "/dashboard" },
   ],
-
+  heroBanner: Banner,
   footerLink: [
     {
       id: 1,
