@@ -91,6 +91,7 @@ const data = {
   ],
   about: {
     description: `Since ancient times, Dinajpur district has been politically, economically, socially and educationally underdeveloped compared to other regions. Dinajpur has been situated as an unbroken township since ancient times at the north-western edge of Barendra land. We get a lot of information about the educational system of Dinajpur during the Hindu period. Although there are no obstacles in the field of education for the Brahmins of Dinajpur, a large population here has been out of formal education for a long time due to the fact that the local tribals are considered very low-born.`,
+    
     items: [
       {
         id: 1,
@@ -128,6 +129,9 @@ const data = {
           "Since ancient times, Dinajpur district has been politically, economically, socially and educationally.",
       },
     ],
+  },
+  blog: {
+    description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book…`
   },
   contactDetails: [
     {
