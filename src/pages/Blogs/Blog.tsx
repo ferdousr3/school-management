@@ -43,7 +43,7 @@ const Blog = () => {
               <Typography
                 variant="sectionTitle"
                 component="h1"
-                sx={{ mt: { sm: "4rem", xs: "8rem", md: "4rem" } }}
+                sx={{ mt: { } }}
               >
                 Search
               </Typography>
@@ -54,7 +54,7 @@ const Blog = () => {
               >
                 Leave your comment
               </Typography>
-              <Button variant="outlined" size="large" endIcon={<SearchIcon />} fullWidth sx={{my:{md:"2rem"}}}>Search... </Button>
+              <Button variant="outlined" size="large" endIcon={<SearchIcon />} fullWidth sx={{my:{md:"2rem", xs:"2rem"}}}>Search... </Button>
               
               <img src={addImage} alt="blog" width="100%" height="auto" />
             </Grid>
