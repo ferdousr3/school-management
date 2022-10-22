@@ -12,6 +12,7 @@ const styles = sxStyles({
         display: 'block',
         paddingLeft: '11px',
         lineHeight: '0.9',
+        marginTop:'2rem'
   }),
 
  
