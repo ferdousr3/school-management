@@ -51,13 +51,6 @@ const Blog = () => {
                 <Typography variant="subtitle2" 
                 sx={{fontSize: '0.875rem',color:'#e05a36', lineHeight:'1.1', marginTop: '5px'}}>Leave your Keyword</Typography>
               </Typography>
-              {/* <Typography
-                variant="description"
-                component="p"
-                sx={{ pt: "" }}
-              >
-                Leave your comment
-              </Typography> */}
               </Box>  
               <Button variant="outlined" size="large" endIcon={<SearchIcon />} fullWidth sx={{my:{md:"2rem", xs:"2rem", justifyContent:'space-between'}}}>Search... </Button>
               

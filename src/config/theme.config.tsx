@@ -39,9 +39,6 @@ const theme = createTheme({
     primary: {
       main: themePalette.LIME,
     },
-    // bgtrans: {
-    //   main: themePalette.TRANS,
-    // },
     secondary: {
       main: themePalette.ORANGE,
     },
