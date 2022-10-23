@@ -47,7 +47,6 @@ export default function Login() {
     data: IFormInputs
   ) => {
     await signInWithEmailAndPassword(data.email, data.password);
-    console.log("first from data ", data);
     // toast.success("Sign Up Success");
   };
 

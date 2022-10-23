@@ -5,3 +5,8 @@ export const FIREBASE_ERRORS = {
   "Firebase: Error (auth/wrong-password).": "Invalid email or password",
   "Firebase: Error (auth/popup-closed-by-user).": "Invalid login",
 };
+export const FIREBASE_ERRORS_PASS = {
+  "Firebase: Error (auth/user-not-found).": "Invalid email ",
+  "Firebase: Error (auth/wrong-password).": "Invalid email or password",
+  "Firebase: Error (auth/popup-closed-by-user).": "Invalid login",
+};

@@ -55,7 +55,6 @@ const SignUp: FC = () => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
     reset();
-    console.log("first from data ", data);
     // toast.success("Sign Up Success");
   };
 

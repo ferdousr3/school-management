@@ -26,5 +26,14 @@ const LoginSchema = yup.object().shape({
       "Password must contain at least 8 characters, one uppercase, one number and one special case character"
     ),
 });
+const PassReset = yup.object().shape({
+  email: yup
+    .string()
+    .email()
+    .required("Please enter your Email")
+    .matches(
+      /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/
+    ),
+});
 
-export { SignUpSchema, LoginSchema };
+export { SignUpSchema, LoginSchema, PassReset };
