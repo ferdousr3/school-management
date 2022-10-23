@@ -27,7 +27,6 @@ const data = {
     { text: "About", path: "/about" },
     { text: "Blog", path: "/blog" },
     { text: "Contact", path: "/contact" },
-    { text: "Dashboard", path: "/dashboard" },
   ],
   heroBanner: Banner,
   footerLink: [

@@ -31,7 +31,7 @@ const HeaderTop: React.FC = () => {
               </a>
             </Box>
           </Box>
-          <Box sx={styles.headerTopRight}>Login | Register</Box>
+          <Box sx={styles.headerTopRight}>Live Chat</Box>
         </Box>
       </Container>
     </>

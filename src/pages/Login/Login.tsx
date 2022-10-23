@@ -65,8 +65,8 @@ export default function Login() {
       <PageTitle title="Login " />
       <Box sx={styles.main}>
         <LockOutlinedIcon sx={styles.icon} />
-        <Typography component="h1" variant="h5">
-          Sign in with
+        <Typography component="h1" sx={styles.mainHeading}>
+          Sign In
         </Typography>
         {/* social login component */}
         <SocialLogin />

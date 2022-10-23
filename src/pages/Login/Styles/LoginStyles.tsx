@@ -8,7 +8,7 @@ export function sxStyles<T extends SxStyles>(arg: T): T {
 
 const styles = sxStyles({
   main: (theme: Theme) => ({
-    marginTop: 8,
+    marginTop: "10rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -18,6 +18,10 @@ const styles = sxStyles({
     padding: {
       sm: "1rem 2rem",
     },
+  }),
+  mainHeading: (theme: Theme) => ({
+    fontSize: "1rem",
+    fontWeight: 700,
   }),
   icon: (theme: Theme) => ({
     m: 1,
