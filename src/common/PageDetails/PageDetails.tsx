@@ -6,7 +6,8 @@ const PageDetails = ({ title }: { title: string }) => {
   const theme = useTheme();
   const RouterLink = styled(Link)(({ theme }) => ({
     color: theme.palette.secondary.main,
-    fontSize: "1rem",
+    fontSize: '14px',
+    lineHGeight: '20px',
     fontWeight: 700,
     textDecoration: "none",
     "&:hover": {
@@ -38,15 +39,21 @@ const PageDetails = ({ title }: { title: string }) => {
               xs: "2rem",
             },
             pt: {
-              sm: "8rem",
-              xs: "2rem",
+              md: "14rem",
+              sm: "14rem",
+              xs: "14rem",
+            },
+            pb: {
+              md: "6rem",
+              sm: "6rem",
+              xs: "6rem",
             },
           }}
         >
           <Typography
             component="h1"
             sx={{
-              fontSize: "3rem",
+              fontSize: "2rem",
               fontWeight: 700,
               color: theme.extraColor.white,
             }}

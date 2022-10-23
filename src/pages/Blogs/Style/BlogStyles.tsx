@@ -14,6 +14,12 @@ const styles = sxStyles({
         lineHeight: '0.9',
         marginTop:'2rem'
   }),
+    blogIcons: (theme: Theme) => ({
+      height:'1.2rem', 
+      width:'1.7rem',
+      color:'#e05a36',
+      marginBottom: '-3px'
+  }),
 
  
 });

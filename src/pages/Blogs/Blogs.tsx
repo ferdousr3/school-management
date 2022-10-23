@@ -7,8 +7,8 @@ const Blogs = () => {
     return (
         <>
         {/* page title for SEO */}
-        <PageTitle title="Blog" />
-        <PageDetails title="Blog" />
+        <PageTitle title="Our Blog" />
+        <PageDetails title="Our Blog" />
         <section>
           {/* <AboutInstitution /> */}
           <Blog />

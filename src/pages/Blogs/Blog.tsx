@@ -30,9 +30,9 @@ const Blog = () => {
                         height="auto"
                       />
                       <Stack direction="row" spacing={2} sx={{my:{md:"2rem", xs:"2rem"}, pb:{md:'1.5rem', xs:'1.5rem'}, borderBottom:"1px solid #ececec"}}>
-                        <Typography variant="subtitle2"><Person2Icon sx={{height:'0.7rem', width:'0.7rem'}} />{blog.author}</Typography>
-                        <Typography variant="subtitle2"><CalendarMonthIcon sx={{height:'0.7rem', width:'0.7rem'}}/>{blog.date}</Typography>
-                        <Typography variant="subtitle2"><FolderIcon sx={{height:'0.7rem', width:'0.7rem'}}/>{blog.source}</Typography>
+                        <Typography variant="subtitle2"><Person2Icon sx={styles.blogIcons} />{blog.author}</Typography>
+                        <Typography variant="subtitle2"><CalendarMonthIcon sx={styles.blogIcons}/>{blog.date}</Typography>
+                        <Typography variant="subtitle2"><FolderIcon sx={styles.blogIcons}/>{blog.source}</Typography>
                       </Stack>
 
                       <Typography
