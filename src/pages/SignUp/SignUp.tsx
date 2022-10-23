@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react";
 import {
   Box,
   Grid,
-  Typography,
+  // Typography,
   Container,
   TextField,
   Divider,
@@ -22,21 +22,23 @@ import {
 import auth from "../../config/firebase.config";
 import { LoadingButton } from "@mui/lab";
 import { useNavigate } from "react-router-dom";
-import { LoginSchema } from "../../utils/YupSchema";
+import { SignUpSchema } from "../../utils/YupSchema";
+import { FIREBASE_ERRORS } from "../../utils/FirebaseErrors";
+
 
 
 const SignUp: FC = () => {
   const [createUserWithEmailAndPassword, user, emailLoading, emailError] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-   useEffect(() => {
-     if (user) {
-       navigate("/login");
-     }
-   }, [user, updating, navigate]);
-  
+  useEffect(() => {
+    if (user) {
+      navigate("/login");
+    }
+  }, [user, updating, navigate]);
+
   // react hooks from
   const {
     handleSubmit,
@@ -44,17 +46,7 @@ const SignUp: FC = () => {
     // watch,
     reset,
     formState: { errors },
-  } = useForm<IFormInputs>({ resolver: yupResolver(LoginSchema) });
-
-  // error handling
-  let signInError;
-  if (emailError || updateError) {
-    signInError = (
-      <p className="label-text-alt text-red-600 mb-3 ml-1">
-        {emailError?.message || updateError?.message}
-      </p>
-    );
-  }
+  } = useForm<IFormInputs>({ resolver: yupResolver(SignUpSchema) });
 
   // from submit
   const fromSubmitHandler: SubmitHandler<IFormInputs> = async (
@@ -72,9 +64,9 @@ const SignUp: FC = () => {
       <PageTitle title="Sign Up " />
       <Box sx={styles.main}>
         <PersonAddIcon sx={styles.icon} />
-        <Typography component="h1" sx={styles.mainHeading}>
+        {/* <Typography component="h1" sx={styles.mainHeading}>
           Sign Up
-        </Typography>
+        </Typography> */}
         {/* social login component */}
         <SocialLogin />
         <Box sx={styles.orSection}>
@@ -142,8 +134,17 @@ const SignUp: FC = () => {
                 )}
               />
             </Grid>
+            {(emailError || updateError) && (
+              <Box sx={styles.errorMessages} component="p">
+                {
+                  FIREBASE_ERRORS[
+                    (emailError || updateError)
+                      ?.message as keyof typeof FIREBASE_ERRORS
+                  ]
+                }
+              </Box>
+            )}
           </Grid>
-          {signInError}
           <LoadingButton
             type="submit"
             fullWidth

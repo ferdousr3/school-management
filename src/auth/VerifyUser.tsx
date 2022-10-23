@@ -1,63 +1,104 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import { useSendEmailVerification } from "react-firebase-hooks/auth";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { Box, Container, useTheme } from "@mui/material";
+import {
+  useAuthState,
+  useSendEmailVerification,
+} from "react-firebase-hooks/auth";
+import {
+  Box,
+  Container,
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  Typography,
+} from "@mui/material";
 import Header from "../common/Header/Header";
 import auth from "../config/firebase.config";
 import MailOutlineRoundedIcon from "@mui/icons-material/MailOutlineRounded";
+import { useNavigate } from "react-router-dom";
+import { styles } from "./Styles/VerifyUserStyle";
+import { HiShieldCheck, HiShieldExclamation } from "react-icons/hi";
+import { toast } from "react-toastify";
 
 // type VerifyUserProps = {};
 
 const VerifyUser: React.FC = () => {
+  const [user] = useAuthState(auth);
   const [sendEmailVerification] = useSendEmailVerification(auth);
-  const theme = useTheme()
+  const navigate = useNavigate();
+  const sendEmail = async () => {
+    await sendEmailVerification();
+    toast.success("Send Email Verify Link");
+  };
+
   return (
     <>
       <Header />
       <Container>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            mt: "10rem",
-          }}
-        >
-          <Card
-            sx={{
-              maxWidth: 345,
-              boxShadow: "none",
-              border: `1px solid ${theme.extraColor.borderColor}`,
-            }}
-          >
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Verify Email
-              </Typography>
-              <Box>
-                <MailOutlineRoundedIcon />
-              </Box>
-            </CardContent>
+        <Box sx={styles.main}>
+          <Card sx={styles.mainCard}>
+            {user?.providerData[0]?.providerId === "password" &&
+            !user?.emailVerified ? (
+              <>
+                <CardContent>
+                  <Typography
+                    variant="h5"
+                    component="div"
+                    sx={styles.notVerifiedTitle}
+                  >
+                    Email Not Verified <HiShieldExclamation />
+                  </Typography>
+                  <Box sx={styles.subTitleMain}>
+                    <Typography component="p" sx={{ pt: 1 }}>
+                      Your Email
+                      <Box component="span" sx={styles.subTitleText}>
+                        {user?.email}
+                      </Box>
+                      is not verified. Please check your inbox or spam folder.
+                      If You not get link , click <b>send email</b> button for
+                      send email Link again.
+                    </Typography>
+                  </Box>
+                </CardContent>
+              </>
+            ) : (
+              <>
+                <Typography
+                  variant="h5"
+                  component="div"
+                  sx={styles.notVerifiedTitle}
+                >
+                  Email is Verified <HiShieldCheck />
+                </Typography>
+              </>
+            )}
+
             <CardActions>
-              <Button sx={{ px: "1rem" }} size="small" variant="contained">
-                Go Home
-              </Button>
               <Button
+                onClick={() => navigate("/")}
                 sx={{ px: "1rem" }}
                 size="small"
-                color="secondary"
                 variant="contained"
-                endIcon={<MailOutlineRoundedIcon />}
-                onClick={async () => {
-                  await sendEmailVerification();
-                }}
               >
-                Send Email
+                Go Home
               </Button>
+              {user?.providerData[0]?.providerId === "password" &&
+              !user?.emailVerified ? (
+                <>
+                  <Button
+                    sx={{ px: "1rem" }}
+                    size="small"
+                    color="secondary"
+                    variant="contained"
+                    endIcon={<MailOutlineRoundedIcon />}
+                    onClick={sendEmail}
+                  >
+                    Send Email
+                  </Button>
+                </>
+              ) : (
+                ""
+              )}
             </CardActions>
           </Card>
         </Box>

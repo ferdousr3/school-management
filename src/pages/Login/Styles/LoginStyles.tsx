@@ -41,6 +41,18 @@ const styles = sxStyles({
     justifyContent: "center",
     alignItems: "center",
   }),
+  errorMessages: (theme: Theme) => ({
+    mt: "8px",
+    mb: "0px",
+    width: "100%",
+    textAlign: "center",
+    fontSize: "1rem",
+    fontWeight: 400,
+    color: "red",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  }),
 });
 
 export { styles };

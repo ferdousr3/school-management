@@ -19,7 +19,7 @@ const HeaderTop: React.FC = () => {
         <Box sx={styles.headerTopMain}>
           <Box sx={styles.headerTopLeft}>
             <Box sx={styles.headerTopLeftElement}>
-              <a href="mailto:bgreekcode@gmail.com?Subject=Hello" target="_top">
+              <a href="tel:123-456-7890" target="_top">
                 <LocalPhoneRoundedIcon />
                 123-456-7890
               </a>
