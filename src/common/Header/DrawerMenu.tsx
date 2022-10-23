@@ -1,6 +1,7 @@
 import {
+  Avatar,
   Box,
-  Button,
+  Chip,
   Divider,
   List,
   ListItem,
@@ -13,6 +14,11 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../config/firebase.config";
 import data from "../../data/data";
 import RouteLink from "./RouteLink";
+import MenuItem from "@mui/material/MenuItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Settings from "@mui/icons-material/Settings";
+import Logout from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 
 type DrawerMenuProps = {
   handleDrawerToggle: () => void;
@@ -26,9 +32,6 @@ const DrawerMenu: React.FC<DrawerMenuProps> = ({
   const [user] = useAuthState(auth);
 
   const navigate = useNavigate();
-  // const handleLogOut = (): void => {
-  //   signOut(auth);
-  // };
 
   return (
     <>
@@ -48,41 +51,73 @@ const DrawerMenu: React.FC<DrawerMenuProps> = ({
             {data.schoolDetails.shortName}
           </Typography>
         </Box>
+
         <Divider />
         <List sx={{ pl: 2 }}>
-          {data.navItems.slice(0, 3).map((item, index) => (
+          {data.navItems.map((item, index) => (
             <ListItem key={index} disablePadding>
               <Box sx={{ pb: 1 }}>
                 <RouteLink to={item.path}>{item.text}</RouteLink>
               </Box>
             </ListItem>
           ))}
-          {data.navItems.slice(3, 4).map((item, index) => (
-            <ListItem key={index} disablePadding>
+
+          {user && (
+            <ListItem disablePadding>
               <Box sx={{ pb: 1 }}>
-                <RouteLink to={item.path}>{item.text}</RouteLink>
+                <RouteLink to="/dashboard">Dashboard</RouteLink>
               </Box>
             </ListItem>
-          ))}
+          )}
         </List>
         <Divider />
-        <Box sx={{ pl: 4, pt: 2 }}>
+        <Box sx={{ pl: 2, pt: 1 }}>
           {user ? (
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleLogOut}
-            >
-              Sign Out
-            </Button>
+            <>
+              <Box sx={{ pl: 2, pb: 1 }}>
+                <Chip
+                  color="secondary"
+                  avatar={<Avatar> {user?.displayName?.slice(0, 1)}</Avatar>}
+                  label={user?.displayName}
+                />
+              </Box>
+
+              <MenuItem sx={{ py: 0, my: "-12px", fontWeight: 700 }}>
+                <ListItemIcon>
+                  <Settings fontSize="small" color="secondary" />
+                </ListItemIcon>
+                Settings
+              </MenuItem>
+              <MenuItem
+                onClick={handleLogOut}
+                sx={{
+                  py: 0,
+                  my: "-12px",
+                  fontWeight: 700,
+                }}
+              >
+                <ListItemIcon>
+                  <Logout fontSize="small" color="secondary" />
+                </ListItemIcon>
+                Logout
+              </MenuItem>
+            </>
           ) : (
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => navigate("/login")}
-            >
-              Sign in
-            </Button>
+            <>
+              <MenuItem
+                onClick={() => navigate("/login")}
+                sx={{
+                  py: 0,
+                  my: "-12px",
+                  fontWeight: 700,
+                }}
+              >
+                <ListItemIcon>
+                  <LoginIcon fontSize="small" color="secondary" />
+                </ListItemIcon>
+                Login
+              </MenuItem>
+            </>
           )}
         </Box>
       </Box>

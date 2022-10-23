@@ -12,6 +12,7 @@ import DAllUsers from "../pages/Dashboard/DAllUsers/DAllUsers";
 import DBanking from "../pages/Dashboard/DBanking/DBanking";
 import RequireAuth from "../auth/RequireAuth";
 import Blogs from "../pages/Blogs/Blogs";
+import PasswordReset from "../auth/PasswordReset";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="forgotPassword" element={<PasswordReset/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
         </Route>

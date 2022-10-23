@@ -2,4 +2,16 @@ interface locationProps {
   state: any;
 }
 
-export type { locationProps };
+interface State {
+  password: string;
+  showPassword: boolean;
+}
+
+interface IFormInputs {
+  name: string;
+  email: string;
+  password: string;
+}
+
+
+export type { locationProps, IFormInputs, State };

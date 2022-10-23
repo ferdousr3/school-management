@@ -2,6 +2,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, useLocation } from "react-router-dom";
 import auth from "../config/firebase.config";
 import Loadings from "../common/Loading/Loadings";
+import VerifyUser from "./VerifyUser";
 
 const RequireAuth = ({ children }: { children: JSX.Element }) => {
   const [user, loading] = useAuthState(auth);
@@ -23,9 +24,9 @@ const RequireAuth = ({ children }: { children: JSX.Element }) => {
   //   return <VerifyUser />;
   // }
   // for verify user
-  // if (user.providerData[0]?.providerId === "password" && !user.emailVerified) {
-  //   return <VerifyUser />;
-  // }
+  if (user.providerData[0]?.providerId === "password" && !user.emailVerified) {
+    return <VerifyUser />;
+  }
 
   return children;
 };

@@ -1,63 +1,53 @@
 import * as React from "react";
 import {
-  Button,
   Box,
   Grid,
-  Typography,
+  // Typography,
   Container,
-  OutlinedInput,
-  InputLabel,
-  InputAdornment,
-  FormControl,
-  IconButton,
   TextField,
-
-  Divider
+  Divider,
   // useTheme,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import CustomLink from "../../common/CustomLink/CustomLink";
 import PageTitle from "../../common/PageTitle/PageTitle";
 import { styles } from "./Styles/LoginStyles";
-
-interface State {
-  password: string;
-  showPassword: boolean;
-}
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { IFormInputs } from "../../utils/Types";
+import { LoginSchema } from "../../utils/YupSchema";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
+import auth from "../../config/firebase.config";
+import { LoadingButton } from "@mui/lab";
+import { FIREBASE_ERRORS } from "../../utils/FirebaseErrors";
+import { locationProps } from "../../utils/Types";
 
 export default function Login() {
-  const [values, setValues] = React.useState<State>({
-    password: "",
-    showPassword: false,
-  });
-  // const theme = useTheme();
-  const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const location: locationProps = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  React.useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
+  // react hooks from
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<IFormInputs>({ resolver: yupResolver(LoginSchema) });
 
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
+  const fromSubmitHandler: SubmitHandler<IFormInputs> = async (
+    data: IFormInputs
   ) => {
-    event.preventDefault();
-  };
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    await signInWithEmailAndPassword(data.email, data.password);
+    // toast.success("Sign Up Success");
   };
 
   return (
@@ -65,61 +55,80 @@ export default function Login() {
       <PageTitle title="Login " />
       <Box sx={styles.main}>
         <LockOutlinedIcon sx={styles.icon} />
-        <Typography component="h1" variant="h5">
-          Sign in with
-        </Typography>
+        {/* <Typography component="h1" sx={styles.mainHeading}>
+          Sign In
+        </Typography> */}
         {/* social login component */}
         <SocialLogin />
         <Box sx={styles.orSection}>
           <Divider sx={{ width: "40%", mr: 2 }} /> or
           <Divider sx={{ width: "40%", ml: 2 }} />
         </Box>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <FormControl sx={{ mt: 1, width: "100%" }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">
-              Password
-            </InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              onChange={handleChange("password")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-            />
-          </FormControl>
-          <Button
+        <Box
+          component="form"
+          onSubmit={handleSubmit(fromSubmitHandler)}
+          sx={{ mt: 1 }}
+        >
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Controller
+                name="email"
+                control={control}
+                defaultValue="Email Address"
+                render={({ field }) => (
+                  <TextField
+                    type="email"
+                    {...field}
+                    autoComplete="email"
+                    fullWidth
+                    label="Email"
+                    autoFocus
+                    error={!!errors?.email}
+                    helperText={errors.email ? errors.email?.message : ""}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Controller
+                name="password"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    type="password"
+                    fullWidth
+                    label="Password"
+                    autoFocus
+                    error={!!errors?.password}
+                    helperText={errors.password ? errors.password?.message : ""}
+                  />
+                )}
+              />
+            </Grid>
+            {error && (
+              <Box sx={styles.errorMessages} component="p">
+                {
+                  FIREBASE_ERRORS[
+                    error?.message as keyof typeof FIREBASE_ERRORS
+                  ]
+                }
+              </Box>
+            )}
+          </Grid>
+
+          <LoadingButton
             type="submit"
             fullWidth
             variant="contained"
+            loading={loading}
             sx={{ mt: 3, mb: 2, py: 1.5 }}
           >
             Sign In
-          </Button>
+          </LoadingButton>
           <Grid container>
             <Grid item xs>
-              <CustomLink text="Forgot password?" url="/signUp" />
+              <CustomLink text="Forgot password?" url="/forgotPassword" />
             </Grid>
             <Grid item>
               <CustomLink text="Don't have an account? Sign Up" url="/signUp" />
