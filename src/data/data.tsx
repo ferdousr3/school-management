@@ -132,8 +132,8 @@ const data = {
     {
       id: 1,
       icon: <PinDropRoundedIcon />,
-      text: "Dhakamor, Fulbari",
-      text2: " Dinajpur",
+      text: "503 Old Buffalo Street",
+      text2: " Northwest #205, New York-3087.",
     },
     {
       id: 2,
