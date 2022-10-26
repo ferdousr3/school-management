@@ -130,24 +130,6 @@ const data = {
       },
     ],
   },
-  blogs:[
-   {
-    title:`SEO for your WP website`,
-    author:`Keny White`,
-    date:`18 Sep, 2018`,
-    source:`in Ideas`,
-    description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book…`,
-    img:"https://i.ibb.co/0D7J21k/seo.png",
-    },
-   {
-    title:`SEO for your React website`,
-    author:`David warn`,
-    date:`18 Sep, 2022`,
-    source:`in Ideas`,
-    description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book…`,
-    img:`https://i.ibb.co/X3f3J1p/we.jpg`
-  },
-],
   contactDetails: [
     {
       id: 1,
