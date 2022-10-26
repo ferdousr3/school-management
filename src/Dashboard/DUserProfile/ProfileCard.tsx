@@ -8,10 +8,10 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../../config/firebase.config";
 import { Box } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
 import Button from "@mui/material/Button";
+import auth from "../../config/firebase.config";
 
 export default function RecipeReviewCard() {
   const [user] = useAuthState(auth);

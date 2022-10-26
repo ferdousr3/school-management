@@ -5,14 +5,14 @@ import About from "../pages/About/About";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Contact from "../pages/Contact/Contact";
-import Dashboard from "../pages/Dashboard/Layout/Dashboard";
 import MainLayout from "./MainLyout";
-import DUserProfile from "../pages/Dashboard/DUserProfile/DUserProfile";
-import DAllUsers from "../pages/Dashboard/DAllUsers/DAllUsers";
-import DBanking from "../pages/Dashboard/DBanking/DBanking";
 import RequireAuth from "../auth/RequireAuth";
 import Blogs from "../pages/Blogs/Blogs";
 import PasswordReset from "../auth/PasswordReset";
+import Dashboard from "../Dashboard/Layout/Dashboard";
+import DUserProfile from "../Dashboard/DUserProfile/DUserProfile";
+import DAllUsers from "../Dashboard/DAllUsers/DAllUsers";
+import DBanking from "../Dashboard/DBanking/DBanking";
 
 const AppRoutes = () => {
   return (

@@ -1,7 +1,8 @@
 import Grid from "@mui/material/Grid";
 import React from "react";
-import PageTitle from "../../../common/PageTitle/PageTitle";
-import ProfileCard from "./ProfileCard";
+import PageTitle from "../../common/PageTitle/PageTitle";
+import ProfileCard from './ProfileCard'
+
 
 const DUserProfile = () => {
   return (
