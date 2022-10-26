@@ -19,17 +19,17 @@ import Avatar from "@mui/material/Avatar";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { AppBar, Drawer } from "./Styles/DashboardStyles";
+import { AppBar, Drawer, styles } from "./Styles/DashboardStyles";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import data from "../../../data/data";
-import Copyright from "./Copyright";
+import auth from "../../config/firebase.config";
+import RouteLink from "../../common/Header/RouteLink";
 import { PaperProps } from "./PaperProps";
-import { styles } from "./Styles/DashboardStyles";
-import RouteLink from "../../../common/Header/RouteLink";
-import { signOut } from "firebase/auth";
+import data from "../../data/data";
+import Copyright from "./Copyright";
 import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../../config/firebase.config";
+import { signOut } from "firebase/auth";
+
 
 // const mdTheme = createTheme();
 

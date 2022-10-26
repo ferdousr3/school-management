@@ -3,9 +3,9 @@ import { Box, Container, TextField } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import PageTitle from "../common/PageTitle/PageTitle";
 import { styles } from "./Styles/PasswordResetStyles";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IFormInputs } from "../utils/Types";
+import { IPassReset } from "../utils/Types";
 import { PassReset } from "../utils/YupSchema";
 import { LoadingButton } from "@mui/lab";
 import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
@@ -18,27 +18,32 @@ const PasswordReset = () => {
     useSendPasswordResetEmail(auth);
   // react hooks from
   const {
-    watch,
+    handleSubmit,
     control,
-    reset,
     formState: { errors },
-  } = useForm<IFormInputs>({ resolver: yupResolver(PassReset) });
+  } = useForm<IPassReset>({ resolver: yupResolver(PassReset) });
 
-  // const regEmail = RegExp( /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/)
-  const forgotPassword = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    const email = watch("email");
-
-    await sendPasswordResetEmail(email);
-    reset();
-
-    toast("Rest email send");
+  const fromSubmitHandler: SubmitHandler<IPassReset> = async (
+    data: IPassReset
+  ) => {
+    await sendPasswordResetEmail(data.email);
+    if (!error?.message) {
+      console.log("email error ", error?.message);
+      toast.error("Email Not sent");
+    } else {
+      toast.success("Email Sent");
+    }
   };
 
   return (
     <Container component="div" maxWidth="xs">
       <PageTitle title="Forgot Password " />
       <Box sx={styles.main}>
-        <Box sx={{ mt: 1 }}>
+        <Box
+          sx={{ mt: 1 }}
+          component="form"
+          onSubmit={handleSubmit(fromSubmitHandler)}
+        >
           <Box sx={styles.mainHeading}>
             <Controller
               name="email"
@@ -59,7 +64,7 @@ const PasswordReset = () => {
               )}
             />
           </Box>
-          {error && (
+          {(error || errors.email) && (
             <Box sx={styles.errorMessages} component="p">
               {
                 FIREBASE_ERRORS_PASS[
@@ -68,8 +73,10 @@ const PasswordReset = () => {
               }
             </Box>
           )}
+
           <LoadingButton
-            onClick={forgotPassword}
+            // onClick={forgotPassword}
+            type="submit"
             fullWidth
             variant="contained"
             loading={sending}
