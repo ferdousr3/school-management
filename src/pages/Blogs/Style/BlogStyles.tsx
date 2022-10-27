@@ -20,6 +20,11 @@ const styles = sxStyles({
       color:'#e05a36',
       marginBottom: '-3px'
   }),
+  searchButton: (theme: Theme) => ({
+      background:'#e05a36',
+      color:'#fff',
+      padding: '1rem'
+  }),
 
  
 });

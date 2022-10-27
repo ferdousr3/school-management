@@ -42,7 +42,7 @@ const Blog = () => {
                       <Typography
                         variant="sectionTitle"
                         component="h1"
-                        sx={{ mb: { md: "1rem", xs: "1rem" } }}
+                        sx={{ my: { md: "2rem", xs: "1rem" } }}
                       >
                         {post.title}
                       </Typography>
@@ -79,12 +79,26 @@ const Blog = () => {
                         variant="description"
                         component="p"
                         // sx={{ pt: "1rem" }}
-                        sx={{ py: { sm: "1rem", xs: "1rem" } }}
+                        sx={{ pb: { sm: "1rem", xs: "1rem", md: "1rem" } }}
                       >
                         {post.description}
                       </Typography>
 
-                      <Link to={`${post?.blogID}`}>READ MORE</Link>
+                      <Link to={`${post?.blogID}`}
+                        style={{
+                            color:"#fff",
+                            textDecoration:"none",
+                            background: "#DB4922",
+                            padding: ".7rem 1rem",
+                            fontSize:".9rem",
+                            fontWeight:"600",
+                            width:"100%",
+                            borderRadius: "2rem"
+                          }}
+                        >
+                          READ MORE
+                      
+                      </Link>
                     </Box>
                   ))}
                 </Box>
