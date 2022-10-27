@@ -17,6 +17,7 @@ const ContactLeft: React.FC = () => {
         ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor
         incidunt ut labore et dolore magna aliqua invideo miror magis.
       </Typography>
+      {/* /** * * contact address */}
       <Box sx={{ pt: 4 }}>
         {data.contactDetails.map((item) => (
           <Stack
@@ -36,6 +37,7 @@ const ContactLeft: React.FC = () => {
           </Stack>
         ))}
       </Box>
+      {/* /** * * contact social links*/}
       <Box sx={{ pt: "1.5rem" }}>
         <Stack
           sx={{ display: "flex", alignItems: "center", pb: 2 }}

@@ -21,5 +21,20 @@ interface IContactInputs {
   phone: string;
   message: string;
 }
-
-export type { locationProps, IFormInputs, State, IPassReset, IContactInputs };
+interface IBlogInputs {
+  title: string;
+  description?: string;
+  slug?: string;
+  image: string;
+  source: string;
+  author?: string;
+  category: string;
+}
+export type {
+  locationProps,
+  IFormInputs,
+  State,
+  IPassReset,
+  IContactInputs,
+  IBlogInputs,
+};
