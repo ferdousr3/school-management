@@ -1,148 +1,158 @@
-import * as React from "react";
+import React, { FC, useEffect } from "react";
 import {
-  Button,
   Box,
   Grid,
-  Typography,
+  // Typography,
   Container,
-  OutlinedInput,
-  InputLabel,
-  InputAdornment,
-  FormControl,
-  IconButton,
   TextField,
-  // useTheme,
   Divider,
 } from "@mui/material";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import CustomLink from "../../common/CustomLink/CustomLink";
 import PageTitle from "../../common/PageTitle/PageTitle";
 import { styles } from "./Styles/SignUpStyles";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { IFormInputs } from "../../utils/Types";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+import auth from "../../config/firebase.config";
+import { LoadingButton } from "@mui/lab";
+import { useNavigate } from "react-router-dom";
+import { SignUpSchema } from "../../utils/YupSchema";
+import { FIREBASE_ERRORS } from "../../utils/FirebaseErrors";
 
-interface State {
-  password: string;
-  showPassword: boolean;
-}
-export default function SignUp() {
-  const [values, setValues] = React.useState<State>({
-    password: "",
-    showPassword: false,
-  });
-  // const theme = useTheme();
-  const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
 
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
+const SignUp: FC = () => {
+  const [createUserWithEmailAndPassword, user, emailLoading, emailError] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/login");
+    }
+  }, [user, updating, navigate]);
+
+  // react hooks from
+  const {
+    handleSubmit,
+    control,
+    // watch,
+    reset,
+    formState: { errors },
+  } = useForm<IFormInputs>({ resolver: yupResolver(SignUpSchema) });
+
+  // from submit
+  const fromSubmitHandler: SubmitHandler<IFormInputs> = async (
+    data: IFormInputs
   ) => {
-    event.preventDefault();
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    reset();
+    // toast.success("Sign Up Success");
   };
 
   return (
     <Container component="div" maxWidth="xs">
       <PageTitle title="Sign Up " />
-      <Box
-        sx={styles.main}
-      >
-        <PersonAddIcon
-          sx={styles.icon}
-        />
-        <Typography component="h1" variant="h5">
-          Sign up with
-        </Typography>
+      <Box sx={styles.main}>
+        <PersonAddIcon sx={styles.icon} />
+        {/* <Typography component="h1" sx={styles.mainHeading}>
+          Sign Up
+        </Typography> */}
         {/* social login component */}
         <SocialLogin />
-        <Box
-          sx={styles.orSection}
-        >
-          <Divider sx={{ width: "40%",mr:2 }} /> or
-          <Divider sx={{ width: "40%",ml:2 }} />
+        <Box sx={styles.orSection}>
+          <Divider sx={{ width: "40%", mr: 2 }} /> or
+          <Divider sx={{ width: "40%", ml: 2 }} />
         </Box>
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit(fromSubmitHandler)}
+          sx={{ mt: 3 }}
+        >
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextField
-                autoComplete="given-name"
-                name="firstName"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
+              <Controller
+                name="name"
+                control={control}
+                defaultValue="Jon"
+                render={({ field }) => (
+                  <TextField
+                    type="text"
+                    {...field}
+                    autoComplete="given-name"
+                    fullWidth
+                    label="Name"
+                    autoFocus
+                    error={!!errors?.name}
+                    helperText={errors.name ? errors.name?.message : ""}
+                  />
+                )}
               />
             </Grid>
-
             <Grid item xs={12}>
-              <TextField
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
+              <Controller
                 name="email"
-                autoComplete="email"
+                control={control}
+                defaultValue="Email Address"
+                render={({ field }) => (
+                  <TextField
+                    type="email"
+                    {...field}
+                    autoComplete="email"
+                    fullWidth
+                    label="Email"
+                    autoFocus
+                    error={!!errors?.email}
+                    helperText={errors.email ? errors.email?.message : ""}
+                  />
+                )}
               />
             </Grid>
             <Grid item xs={12}>
-              <FormControl sx={{ mt: 1, width: "100%" }} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password">
-                  Password
-                </InputLabel>
-                <OutlinedInput
-                  id="outlined-adornment-password"
-                  type={values.showPassword ? "text" : "password"}
-                  value={values.password}
-                  onChange={handleChange("password")}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {values.showPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  label="Password"
-                />
-              </FormControl>
+              <Controller
+                name="password"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    type="password"
+                    fullWidth
+                    label="Password"
+                    autoFocus
+                    error={!!errors?.password}
+                    helperText={errors.password ? errors.password?.message : ""}
+                  />
+                )}
+              />
             </Grid>
+            {(emailError || updateError) && (
+              <Box sx={styles.errorMessages} component="p">
+                {
+                  FIREBASE_ERRORS[
+                    (emailError || updateError)
+                      ?.message as keyof typeof FIREBASE_ERRORS
+                  ]
+                }
+              </Box>
+            )}
           </Grid>
-          <Button
+          <LoadingButton
             type="submit"
             fullWidth
             variant="contained"
+            loading={emailLoading}
             sx={{ mt: 3, mb: 2, py: 1.5 }}
           >
             Sign Up
-          </Button>
+          </LoadingButton>
           <Grid container justifyContent="flex-end">
             <Grid item>
               <CustomLink
@@ -155,4 +165,5 @@ export default function SignUp() {
       </Box>
     </Container>
   );
-}
+};
+export default SignUp;

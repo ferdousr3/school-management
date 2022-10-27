@@ -1,5 +1,6 @@
 import React from 'react';
-import PageTitle from '../../../common/PageTitle/PageTitle';
+import PageTitle from '../../common/PageTitle/PageTitle';
+
 
 const DAllUsers = () => {
   return (

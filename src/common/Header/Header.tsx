@@ -2,14 +2,20 @@ import Logout from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import Settings from "@mui/icons-material/Settings";
 import {
-  AppBar, Avatar, Box, Button,
+  AppBar,
+  Avatar,
+  Box,
+  Button,
   Container,
   Divider,
   Drawer,
-  IconButton, ListItemIcon,
+  IconButton,
+  ListItemIcon,
   Menu,
-  MenuItem, Toolbar,
-  Typography, useTheme
+  MenuItem,
+  Toolbar,
+  Typography,
+  useTheme,
 } from "@mui/material";
 import { signOut } from "firebase/auth";
 import * as React from "react";
@@ -22,6 +28,7 @@ import HeaderTop from "./HeaderTop";
 import { PaperProps } from "./PaperProps";
 import RouteLink from "./RouteLink";
 import { styles } from "./Styles/HeaderStyles";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 interface Props {
   /**
@@ -136,7 +143,7 @@ export default function DrawerAppBar(props: Props) {
                 </Box>
               </Box>
               <Box sx={{ display: { xs: "none", md: "block" } }}>
-                {data.navItems.slice(0, 4).map((item, index) => (
+                {data.navItems.map((item, index) => (
                   <RouteLink key={index} to={item.path}>
                     {item.text}
                   </RouteLink>
@@ -154,24 +161,27 @@ export default function DrawerAppBar(props: Props) {
                         textAlign: "center",
                       }}
                     >
-                      <IconButton
+                      <Button
                         onClick={handleClick}
                         size="small"
                         sx={{ ml: 2 }}
                         aria-controls={menuOpen ? "account-menu" : undefined}
                         aria-haspopup="true"
                         aria-expanded={menuOpen ? "true" : undefined}
+                        endIcon={<KeyboardArrowDownIcon color="secondary" />}
                       >
                         <Avatar
                           sx={{
                             width: 32,
                             height: 32,
                             textTransform: "uppercase",
+                            // background: theme.extraColor.white,
+                            color: theme.palette.primary.main,
                           }}
                         >
                           {user?.displayName?.slice(0, 1)}
                         </Avatar>
-                      </IconButton>
+                      </Button>
                     </Box>
                     <Menu
                       anchorEl={anchorEl}
@@ -184,18 +194,19 @@ export default function DrawerAppBar(props: Props) {
                       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                     >
                       <MenuItem>
-                        <Avatar /> {user?.displayName}
+                        
+                        {user?.displayName}
                       </MenuItem>
                       <Divider />
                       <MenuItem>
                         <ListItemIcon>
-                          <Settings fontSize="small" />
+                          <Settings fontSize="small"  />
                         </ListItemIcon>
                         Settings
                       </MenuItem>
                       <MenuItem onClick={handleLogOut}>
                         <ListItemIcon>
-                          <Logout fontSize="small" />
+                          <Logout fontSize="small" color='secondary' />
                         </ListItemIcon>
                         Logout
                       </MenuItem>

@@ -80,6 +80,14 @@ const styles = sxStyles({
     color: "#666666",
     fontWeight: 400,
   }),
+  submitButton: (theme: Theme) => ({
+    mt: 3,
+    mb: 2,
+    py: 1.5,
+    px: 4,
+    fontWeight: 700,
+    textTransform: "uppercase !important",
+  }),
 });
 
 export { styles };

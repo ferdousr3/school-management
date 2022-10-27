@@ -1,5 +1,5 @@
 import { Box, Container } from "@mui/material";
-import React, {useState, useEffect} from "react";
+// import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import PageDetails from "../../common/PageDetails/PageDetails";
 import PageTitle from "../../common/PageTitle/PageTitle";
@@ -8,13 +8,13 @@ import PageTitle from "../../common/PageTitle/PageTitle";
 const BlogDetails = () => {
   const { blogId } = useParams();
 
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    const url = "BlogData.json";
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
-  }, []);
+  // const [setPosts] = useState([]);
+  // useEffect(() => {
+  //   const url = "BlogData.json";
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => setPosts(data));
+  // }, []);
 
   return (
     <>
