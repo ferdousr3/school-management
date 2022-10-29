@@ -8,10 +8,8 @@ const Event = () => {
     <>
       <Box sx={{ py: { sm: "2rem", xs: "2rem" } }}>
         <Container>
-          <Grid container >
-            
-              <EventsCard />
-         
+          <Grid container>
+            <EventsCard />
           </Grid>
         </Container>
       </Box>

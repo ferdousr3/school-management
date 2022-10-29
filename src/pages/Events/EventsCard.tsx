@@ -61,7 +61,7 @@ export default function RecipeReviewCard() {
   return (
   <>
     {events.map((event: eventsData)=>
-  <Grid item xs={12} padding={2} md={4}>
+  <Grid item xs={12} padding={2} md={6}>
     <Card>
       {/* <CardHeader
         avatar={
@@ -105,7 +105,7 @@ export default function RecipeReviewCard() {
           color="#444"
           marginTop="1.7rem"
         >
-          Light Box Paper Cut Dioramas
+          {event.title}
         </Typography>
         <Typography
           variant="subtitle1"
@@ -117,7 +117,7 @@ export default function RecipeReviewCard() {
             <AccessTimeIcon
               sx={{ fontSize: "15px", paddingTop: "2px", color: "#E05A36" }}
             />{" "}
-            9:00 - 18:00
+            {event.time}
           </Box>{" "}
           BY KENY WHITE
         </Typography>
@@ -127,9 +127,7 @@ export default function RecipeReviewCard() {
           lineHeight={1.5}
           fontSize="16px"
         >
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like...
+          {event.description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
