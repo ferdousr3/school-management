@@ -17,12 +17,17 @@ const ContactRight: React.FC = () => {
     control,
     reset,
     formState: { errors },
-  } = useForm<IContactInputs>({ resolver: yupResolver(ContactForm) });
+  } = useForm<IContactInputs>({
+    resolver: yupResolver(ContactForm),
+    mode: "onChange",
+  });
 
+  /**
+   * contact from submit handler
+   */
   const fromSubmitHandler: SubmitHandler<IContactInputs> = async (
     data: IContactInputs
   ) => {
-    console.log(data);
     reset();
   };
   return (
@@ -104,7 +109,6 @@ const ContactRight: React.FC = () => {
                 />
               )}
             />
-
             <Controller
               name="message"
               defaultValue="Write Your messages"
@@ -127,7 +131,7 @@ const ContactRight: React.FC = () => {
                 />
               )}
             />
-
+            {/* contact from submit button */}
             <Button
               type="submit"
               variant="contained"

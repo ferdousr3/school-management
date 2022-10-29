@@ -7,7 +7,9 @@ import VerifyUser from "./VerifyUser";
 const RequireAuth = ({ children }: { children: JSX.Element }) => {
   const [user, loading] = useAuthState(auth);
   const location = useLocation();
-
+  /**
+   * * when user load or error
+   */
   if (loading) {
     return <Loadings />;
   }
@@ -23,7 +25,9 @@ const RequireAuth = ({ children }: { children: JSX.Element }) => {
   // if (user && !admin) {
   //   return <VerifyUser />;
   // }
-  // for verify user
+  /**
+   * * verify user method
+   */
   if (user.providerData[0]?.providerId === "password" && !user.emailVerified) {
     return <VerifyUser />;
   }

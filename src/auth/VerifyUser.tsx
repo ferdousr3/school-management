@@ -26,6 +26,9 @@ const VerifyUser: React.FC = () => {
   const [user] = useAuthState(auth);
   const [sendEmailVerification] = useSendEmailVerification(auth);
   const navigate = useNavigate();
+  /**
+   * * verify user method
+   */
   const sendEmail = async () => {
     await sendEmailVerification();
     toast.success("Send Email Verify Link");
@@ -72,7 +75,7 @@ const VerifyUser: React.FC = () => {
                 </Typography>
               </>
             )}
-
+            {/* /** * * go home button */}
             <CardActions>
               <Button
                 onClick={() => navigate("/")}
@@ -82,6 +85,7 @@ const VerifyUser: React.FC = () => {
               >
                 Go Home
               </Button>
+              {/* /** * * conditionally email verify link send button */}
               {user?.providerData[0]?.providerId === "password" &&
               !user?.emailVerified ? (
                 <>

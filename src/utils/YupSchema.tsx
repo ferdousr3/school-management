@@ -1,5 +1,7 @@
 import * as yup from "yup";
-
+/**
+ * * sign up user schema validation for name, email and password
+ */
 const SignUpSchema = yup.object().shape({
   name: yup.string().required("Please enter your name").min(4).max(20),
   email: yup.string().email().required("Please enter your email"),
@@ -14,6 +16,9 @@ const SignUpSchema = yup.object().shape({
     ),
 });
 
+/**
+ * * Login user schema validation for  email and password
+ */
 const LoginSchema = yup.object().shape({
   email: yup.string().email().required("Please enter your Email"),
   password: yup
@@ -26,6 +31,11 @@ const LoginSchema = yup.object().shape({
       "Password must contain at least 8 characters, one uppercase, one number and one special case character"
     ),
 });
+
+/**
+ * * Password Reset user schema validation for  email link
+ */
+
 const PassReset = yup.object().shape({
   email: yup
     .string()
@@ -36,6 +46,10 @@ const PassReset = yup.object().shape({
       "Invalid Email"
     ),
 });
+
+/**
+ * * contact from  schema validation for  name,email,phone,messages
+ */
 const ContactForm = yup.object().shape({
   name: yup.string().required("Please enter your name").min(5).max(15),
   email: yup
@@ -51,7 +65,10 @@ const ContactForm = yup.object().shape({
     .required("Please enter your name")
     .min(10)
     .max(14)
-    .matches(/^(\+|00)[1-9][0-9 \-.]{7,32}$/, "add country code and only number "),
+    .matches(
+      /^(\+|00)[1-9][0-9 \-.]{7,32}$/,
+      "add country code and only number "
+    ),
   message: yup.string().required("Please enter your name").min(20).max(100),
 });
 
