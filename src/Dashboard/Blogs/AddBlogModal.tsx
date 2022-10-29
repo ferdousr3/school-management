@@ -53,6 +53,7 @@ const AddBlogModal: React.FC<BlogModalProps> = ({ open, handleClose }) => {
           </Box>
         </Box>
         <DialogContent>
+          {/* blog component from add new blog */}
           <AddNewBlog />
         </DialogContent>
       </Dialog>
