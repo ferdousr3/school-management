@@ -14,6 +14,7 @@ import DUserProfile from "../Dashboard/DUserProfile/DUserProfile";
 import DAllUsers from "../Dashboard/DAllUsers/DAllUsers";
 import DBanking from "../Dashboard/DBanking/DBanking";
 import BlogDetails from "../pages/Blogs/BlogDetails";
+import Events from "../pages/Events/Events";
 
 const AppRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const AppRoutes = () => {
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blogs />} />
+          <Route path="/events" element={<Events />} />
           <Route
           path="/blog/:blogId"
           element={<BlogDetails />}
