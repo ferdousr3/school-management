@@ -4,16 +4,17 @@ import { Box, Typography, useTheme } from "@mui/material";
 type TitleProps = {
   title: string;
   description: string;
+  position?: string;
 };
 
-const Title: React.FC<TitleProps> = ({ title, description }) => {
+const Title: React.FC<TitleProps> = ({ title, description, position }) => {
   const theme = useTheme();
   return (
     <>
       <Box
         sx={{
           py: 1,
-          textAlign: "center",
+          textAlign: `${position ? position : "center"}`,
           "& h1": {
             fontSize: "1.2rem",
             color: theme.palette.primary.main,

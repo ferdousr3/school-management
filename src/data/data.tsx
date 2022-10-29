@@ -190,9 +190,9 @@ const data = {
     },
     {
       id: 4,
-      text: "New Blog",
+      text: "Blog",
       icon: <FaBloggerB />,
-      path: "new-blog",
+      path: "all-blog",
     },
   ],
   blogCategory: [

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC} from "react";
 import {
   Box,
   Grid,
@@ -16,10 +16,8 @@ import auth from "../../config/firebase.config";
 import { LoadingButton } from "@mui/lab";
 import { useAuthState } from "react-firebase-hooks/auth";
 import data from "../../data/data";
-import { imageSchema } from "../../utils/ImageSchema";
 import { IBlogInputs } from "../../utils/Types";
 import AddIcon from "@mui/icons-material/Add";
-import Title from "./Title";
 import { slugCreator } from "../../utils/SlugCreator";
 import todayDate from "../../utils/TodayDate";
 import Chip from "@mui/material/Chip";
@@ -27,15 +25,15 @@ import TodayIcon from "@mui/icons-material/Today";
 
 const AddNewBlog: FC = () => {
   const [user] = useAuthState(auth);
-  const [loading, setLoading] = useState(false);
-  const fullDate = todayDate();
+  // const [loading, setLoading] = useState(false);
+  const fullDate = todayDate;
 
   // react hooks from with you validation schema
   const {
     handleSubmit,
     control,
     register,
-    reset,
+    // reset,
     formState: { errors },
   } = useForm<IBlogInputs>({
     resolver: yupResolver(blogInputs),
@@ -65,7 +63,7 @@ const AddNewBlog: FC = () => {
       date,
     };
     console.log(newBlog);
-    setLoading(true);
+    // setLoading(true);
     // reset();
     // toast.success("Sign Up Success");
   };
@@ -74,11 +72,6 @@ const AddNewBlog: FC = () => {
     <Container component="div" maxWidth="md">
       <PageTitle title="Add New Blog " />
       <Box sx={styles.main}>
-        {/* title from title component */}
-        <Title
-          title="Add New Blog"
-          description="Please fill all the field with valid information"
-        />
         <Box
           component="form"
           onSubmit={handleSubmit(fromSubmitHandler)}
@@ -175,10 +168,7 @@ const AddNewBlog: FC = () => {
             <Grid item xs={12} md={6}>
               <Box sx={styles.imageInput}>
                 <input
-                  {...register("image", {
-                    validate: (image) =>
-                      imageSchema.validate({ image }).catch((e) => e.errors[0]),
-                  })}
+                  {...register("image")}
                   type="file"
                 />
                 <br />

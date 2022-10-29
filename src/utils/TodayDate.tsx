@@ -36,10 +36,6 @@ const getMonthName = (monthIndex: number): string => {
 const monthName: string = getMonthName(monthIndex);
 
 const date = new Date();
-const fullDate = `${monthName} ${date.getDate()}, ${date.getFullYear()}`;
-
-const todayDate = () => {
-  return <>{fullDate}</>;
-};
+const todayDate = `${monthName} ${date.getDate()}, ${date.getFullYear()}`;
 
 export default todayDate;

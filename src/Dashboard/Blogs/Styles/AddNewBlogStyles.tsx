@@ -9,7 +9,7 @@ const styles = sxStyles({
   main: (theme: Theme) => ({
     background: theme.extraColor.white,
     boxShadow: theme.myShadows.primary,
-    marginTop: "2rem",
+    // marginTop: "2rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

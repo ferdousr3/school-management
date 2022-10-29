@@ -29,6 +29,7 @@ interface IBlogInputs {
   source: string;
   author?: string;
   category: string;
+  date: string;
 }
 export type {
   locationProps,
