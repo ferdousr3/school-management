@@ -21,8 +21,9 @@ const PageDetails = ({ title }: { title: string }) => {
         component="section"
         sx={{
           backgroundImage: `url(${PageDetailsBg})`,
-          backgroundPosition: "center",
+          backgroundPosition: "top",
           backgroundSize: "cover",
+          backgroundRepeat: "no-repeat"
         }}
       >
         <Box
