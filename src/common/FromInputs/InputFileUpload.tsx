@@ -1,15 +1,37 @@
-import React from 'react';
+import { Box } from "@mui/material";
+import React from "react";
+import { Controller, useFormContext } from "react-hook-form";
+import { styles } from "./Styles/FromInputStyles";
 
 type InputFileUploadProps = {
-  
+  name: string;
 };
 
-const InputFileUpload:React.FC<InputFileUploadProps> = () => {
-  
+const InputFileUpload: React.FC<InputFileUploadProps> = ({ name }) => {
+  const { control } = useFormContext();
   return (
-  <>
-  Have a good coding
-  </>
-  )
-}
+    <>
+      <Box sx={styles.imageInput}>
+        <Controller
+          name={name}
+          control={control}
+          // defaultValue=""
+          render={({ field, fieldState: { error }, formState }) => (
+            <>
+              <input
+                type="file"
+                onChange={(e) => {
+                  field.onChange(e.target.files);
+                }}
+                multiple
+              />
+              <br />
+              {<small>{error ? error.message : null}</small>}
+            </>
+          )}
+        />
+      </Box>
+    </>
+  );
+};
 export default InputFileUpload;

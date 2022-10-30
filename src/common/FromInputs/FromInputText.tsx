@@ -6,7 +6,7 @@ import { FormInputProps } from "../../utils/Types";
 const FromInputText: React.FC<FormInputProps> = ({
   name,
   label,
-  defaultValue,
+  // defaultValue,
 }) => {
   const { control } = useFormContext();
   return (
@@ -14,7 +14,7 @@ const FromInputText: React.FC<FormInputProps> = ({
       <Controller
         name={name}
         control={control}
-        defaultValue={defaultValue}
+        // defaultValue={defaultValue}
         render={({
           field: { onChange, value },
           fieldState: { error },

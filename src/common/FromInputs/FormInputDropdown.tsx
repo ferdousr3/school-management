@@ -13,7 +13,7 @@ import { FormInputProps } from "../../utils/Types";
 const FormInputDropdown: React.FC<FormInputProps> = ({
   name,
   label,
-  defaultValue,
+  // defaultValue,
 }) => {
   const { control } = useFormContext();
 
@@ -21,7 +21,7 @@ const FormInputDropdown: React.FC<FormInputProps> = ({
     <FormControl sx={{ width: "100%" }}>
       <InputLabel id="demo-multiple-name-label">{label}</InputLabel>
       <Controller
-        defaultValue={defaultValue}
+        // defaultValue={defaultValue}
         control={control}
         name={name}
         render={({ field: { onChange, value } }) => (
