@@ -1,27 +1,28 @@
-import { FC} from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import AddIcon from "@mui/icons-material/Add";
+import TodayIcon from "@mui/icons-material/Today";
+import { LoadingButton } from "@mui/lab";
 import {
   Box,
-  Grid,
   // Typography,
   Container,
-  TextField,
-  MenuItem,
+  Grid,
 } from "@mui/material";
-import PageTitle from "../../common/PageTitle/PageTitle";
-import { styles } from "./Styles/AddNewBlogStyles";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { blogInputs } from "../../utils/YupBlogSchema";
-import auth from "../../config/firebase.config";
-import { LoadingButton } from "@mui/lab";
+import Chip from "@mui/material/Chip";
+import { FC } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import data from "../../data/data";
-import { IBlogInputs } from "../../utils/Types";
-import AddIcon from "@mui/icons-material/Add";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import FormInputDefaultText from "../../common/FromInputs/FormInputDefaultText";
+import { FormInputDropdown } from "../../common/FromInputs/FormInputDropdown";
+import FormInputTextarea from "../../common/FromInputs/FormInputTextarea";
+import FormInputText from "../../common/FromInputs/FromInputText";
+import PageTitle from "../../common/PageTitle/PageTitle";
+import auth from "../../config/firebase.config";
 import { slugCreator } from "../../utils/SlugCreator";
 import todayDate from "../../utils/TodayDate";
-import Chip from "@mui/material/Chip";
-import TodayIcon from "@mui/icons-material/Today";
+import { IBlogInputs } from "../../utils/Types";
+import { blogInputs } from "../../utils/YupBlogSchema";
+import { styles } from "./Styles/AddNewBlogStyles";
 
 const AddNewBlog: FC = () => {
   const [user] = useAuthState(auth);
@@ -29,16 +30,18 @@ const AddNewBlog: FC = () => {
   const fullDate = todayDate;
 
   // react hooks from with you validation schema
-  const {
-    handleSubmit,
-    control,
-    register,
-    // reset,
-    formState: { errors },
-  } = useForm<IBlogInputs>({
+  const methods = useForm<IBlogInputs>({
     resolver: yupResolver(blogInputs),
     mode: "onChange",
   });
+
+  const {
+    handleSubmit,
+    // reset,
+    control,
+    formState: { errors },
+    register,
+  } = methods;
   const fromSubmitHandler: SubmitHandler<IBlogInputs> = async (
     data: IBlogInputs
   ) => {
@@ -62,7 +65,7 @@ const AddNewBlog: FC = () => {
       author,
       date,
     };
-    console.log(newBlog);
+    console.log("new dynamic", newBlog);
     // setLoading(true);
     // reset();
     // toast.success("Sign Up Success");
@@ -72,145 +75,79 @@ const AddNewBlog: FC = () => {
     <Container component="div" maxWidth="md">
       <PageTitle title="Add New Blog " />
       <Box sx={styles.main}>
-        <Box
-          component="form"
-          onSubmit={handleSubmit(fromSubmitHandler)}
-          sx={{ mt: 3 }}
-        >
-          <Grid container spacing={2}>
-            {/* blog title */}
-            <Grid item xs={12} md={6}>
-              <Controller
-                name="title"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <TextField
-                    type="text"
-                    {...field}
-                    autoComplete="given-title"
-                    fullWidth
-                    label="Title"
-                    autoFocus
-                    error={!!errors?.title}
-                    helperText={errors.title ? errors.title?.message : ""}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Controller
-                name="source"
-                control={control}
-                defaultValue=""
-                render={({ field }) => (
-                  <TextField
-                    type="text"
-                    {...field}
-                    autoComplete="source"
-                    fullWidth
-                    label="Source"
-                    autoFocus
-                    error={!!errors?.source}
-                    helperText={errors.source ? errors.source?.message : ""}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Controller
-                name="author"
-                control={control}
-                defaultValue={user?.displayName as string}
-                render={({ field }) => (
-                  <TextField
-                    disabled
-                    type="text"
-                    {...field}
-                    value={user?.displayName as string}
-                    autoComplete="author"
-                    fullWidth
-                    label="Author"
-                    autoFocus
-                    error={!!errors?.author}
-                    helperText={errors.author ? errors.author?.message : ""}
-                  />
-                )}
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <Controller
-                name="category"
-                defaultValue="Java"
-                control={control}
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    type="text"
-                    fullWidth
-                    label="Category"
-                    id="outlined-select-currency"
-                    select
-                    error={!!errors?.category}
-                    helperText={errors.category ? errors.category?.message : ""}
-                  >
-                    {data?.blogCategory?.map((option) => (
-                      <MenuItem key={option.id} value={option.id}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                )}
-              />
-            </Grid>
-
-            <Grid item xs={12} md={6}>
-              <Box sx={styles.imageInput}>
-                <input
-                  {...register("image")}
-                  type="file"
-                />
-                <br />
-                {errors?.image && <small>{errors?.image?.message}</small>}
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Chip icon={<TodayIcon />} label={fullDate} />
-            </Grid>
-            <Grid item xs={12}>
-              <Controller
-                name="description"
-                defaultValue=""
-                control={control}
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    type="text"
-                    fullWidth
-                    label="Description"
-                    multiline
-                    rows={4}
-                    autoFocus
-                    error={!!errors?.description}
-                    helperText={
-                      errors.description ? errors.description?.message : ""
-                    }
-                  />
-                )}
-              />
-            </Grid>
-          </Grid>
-          <LoadingButton
-            type="submit"
-            variant="contained"
-            endIcon={<AddIcon />}
-            // loading={loading}
-            sx={{ mt: 3, mb: 2, py: 1.5, px: 4 }}
+        <FormProvider {...methods}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit(fromSubmitHandler)}
+            sx={{ mt: 3 }}
           >
-            Add Blog
-          </LoadingButton>
-        </Box>
+            <Grid container spacing={2}>
+              {/* blog title */}
+              <Grid item xs={12} md={6}>
+                <FormInputText
+                  defaultValue=""
+                  name="title"
+                  control={control}
+                  label="Title"
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <FormInputText
+                  defaultValue=""
+                  name="source"
+                  control={control}
+                  label="Source"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormInputDefaultText
+                  defaultValue={user?.displayName as string}
+                  name="author"
+                  setValue={user?.displayName as string}
+                  control={control}
+                  label="Author"
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <FormInputDropdown
+                  defaultValue="Java"
+                  control={control}
+                  name="category"
+                  label="Category"
+                />
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <Box sx={styles.imageInput}>
+                  <input {...register("image")} type="file" />
+                  <br />
+                  {errors?.image && <small>{errors?.image?.message}</small>}
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Chip icon={<TodayIcon />} label={fullDate} />
+              </Grid>
+              <Grid item xs={12}>
+                <FormInputTextarea
+                  defaultValue=""
+                  name="description"
+                  control={control}
+                  label="Description"
+                />
+              </Grid>
+            </Grid>
+            <LoadingButton
+              type="submit"
+              variant="contained"
+              endIcon={<AddIcon />}
+              // loading={loading}
+              sx={{ mt: 3, mb: 2, py: 1.5, px: 4 }}
+            >
+              Add Blog
+            </LoadingButton>
+          </Box>
+        </FormProvider>
       </Box>
     </Container>
   );
