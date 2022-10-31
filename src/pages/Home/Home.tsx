@@ -11,7 +11,7 @@ const Home: React.FC<{}> = () => {
       {/* page title */}
       <PageTitle title="Home" />
       {/* hero section */}
-      <Box sx={{ pb: "1.5rem" }} component="section">
+      <Box sx={{ pb: "1.5rem", mb: '1.5rem' }} component="section">
         <Hero />
       </Box>
       {/* new event section */}
