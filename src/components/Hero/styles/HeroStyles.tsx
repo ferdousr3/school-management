@@ -1,5 +1,5 @@
 import { SxProps, Theme } from "@mui/material";
-import HeroImage from "../../../assets/hero/hero.png";
+import HeroImage from "../../../assets/hero/hero.jpg";
 type SxStyles = Record<string, SxProps<Theme>>;
 
 export function sxStyles<T extends SxStyles>(arg: T): T {
@@ -25,7 +25,7 @@ const styles = sxStyles({
   }),
   heroMainContainer: (theme: Theme) => ({
     maxWidth: {
-      lg: "45rem",
+      lg: "52rem",
       md: "40rem",
       sm: "30rem",
     },
@@ -34,7 +34,7 @@ const styles = sxStyles({
     py: {
       sm: "2rem",
       md: "3rem",
-      lg: "6rem",
+      lg: "3rem",
       xs: "1rem",
     },
   }),

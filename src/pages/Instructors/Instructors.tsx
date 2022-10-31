@@ -16,7 +16,7 @@ const Instructors = () => {
     <>
       <Container>
         <Box sx={{ textAlign: "center" }}>
-          <Box  sx={{ marginBottom: '2rem' }}>
+          <Box  sx={{ marginBottom: '2rem', marginTop:'5rem' }}>
           <Typography variant="h3">FEATURED INSTRUCTORS</Typography>
 
           <Typography variant="h6">
