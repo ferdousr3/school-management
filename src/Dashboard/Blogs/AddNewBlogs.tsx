@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AddIcon from "@mui/icons-material/Add";
 import TodayIcon from "@mui/icons-material/Today";
@@ -25,10 +25,12 @@ import { blogInputs } from "../../utils/YupBlogSchema";
 import { styles } from "./Styles/AddNewBlogStyles";
 import { defaultValues } from "./DefaultValue";
 import InputFileUpload from "../../common/FromInputs/InputFileUpload";
+import { imageBBKey, mainLink } from "../../utils/ApiLInk";
+import { toast } from "react-toastify";
 
 const AddNewBlog: FC = () => {
   const [user] = useAuthState(auth);
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const fullDate = todayDate;
 
   /**
@@ -43,37 +45,82 @@ const AddNewBlog: FC = () => {
   /**
    * 1. Destructure the all property from 'methods'
    */
-  const { handleSubmit, control } = methods;
+  const { handleSubmit, control, reset } = methods;
   /**
    * 1. Form handle submit function
    */
   const fromSubmitHandler: SubmitHandler<IBlogInputs> = async (
     data: IBlogInputs
   ) => {
+    /**
+     **setLoading active here for dabble clicking on button
+     */
+    setLoading(true);
+    /**
+     **add data from input form
+     */
     const title = data?.title;
-    // ! slugCreator is a function call from utility
+    // * slugCreator is a function call from utility
     const slug = slugCreator(title);
     const description = data?.description;
-    const image = data?.image;
-    const source = data.source;
+    const source = data?.source;
     const category = data?.category;
     const author = user?.displayName;
     const date = fullDate;
 
-    const newBlog = {
-      title,
-      slug,
-      description,
-      image,
-      source,
-      category,
-      author,
-      date,
-    };
-    console.log("new dynamic", newBlog);
-    // setLoading(true);
-    // reset();
-    // toast.success("Sign Up Success");
+    /**
+     **FormData for image POST request,
+     ** if we don't use it then image element will be broken
+     */
+    const image = data.image[0];
+    const formDate = new FormData();
+    formDate.append("image", image);
+
+    //image bb picture upload link
+    const imageBBUrl = `https://api.imgbb.com/1/upload?key=${imageBBKey}`;
+    /**
+     **upload image by imageBBUrl link
+     */
+    fetch(imageBBUrl, {
+      method: "POST",
+      body: formDate,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const image = result.data.url;
+          const newBlog = {
+            title,
+            slug,
+            description,
+            image,
+            source,
+            category,
+            author,
+            date,
+          };
+
+          const baseUrl = `${mainLink}/blog`;
+          fetch(baseUrl, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(newBlog),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.id) {
+                toast.success(`${title} added `);
+                reset();
+                setLoading(false);
+              } else {
+                toast.error(`${title} not added `);
+                setLoading(false);
+              }
+            });
+        }
+      });
   };
 
   return (
@@ -98,10 +145,10 @@ const AddNewBlog: FC = () => {
               <Grid item xs={12} sm={6}>
                 {/* blog author inputs from firebase user name  */}
                 <FormInputDefaultText
-                  name="author"
+                  name={user?.displayName as string}
                   setValue={user?.displayName as string}
                   control={control}
-                  label="Author"
+                  label={user?.displayName as string}
                 />
               </Grid>
 
@@ -116,11 +163,6 @@ const AddNewBlog: FC = () => {
 
               <Grid item xs={12} md={6}>
                 {/* image upload */}
-                {/* <Box sx={styles.imageInput}>
-                  <input {...register("image")} type="file" />
-                  <br />
-                  {errors?.image && <small>{errors?.image?.message}</small>}
-                </Box> */}
                 <InputFileUpload name="image" />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -140,8 +182,9 @@ const AddNewBlog: FC = () => {
             <LoadingButton
               type="submit"
               variant="contained"
+              loadingPosition="end"
               endIcon={<AddIcon />}
-              // loading={loading}
+              loading={loading}
               sx={{ mt: 3, mb: 2, py: 1.5, px: 4 }}
             >
               Add Blog
