@@ -1,20 +1,20 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home/Home";
-import Error from "../pages/Error/Error";
-import About from "../pages/About/About";
-import Login from "../pages/Login/Login";
-import SignUp from "../pages/SignUp/SignUp";
-import Contact from "../pages/Contact/Contact";
-import MainLayout from "./MainLyout";
-import RequireAuth from "../auth/RequireAuth";
-import Blogs from "../pages/Blogs/Blogs";
+import { Route, Routes } from "react-router-dom";
 import PasswordReset from "../auth/PasswordReset";
-import Dashboard from "../Dashboard/Layout/Dashboard";
-import DUserProfile from "../Dashboard/DUserProfile/DUserProfile";
+import RequireAuth from "../auth/RequireAuth";
+import AddNewBlog2 from "../Dashboard/Blogs/AddNewBlogs";
+import AllBlogs from "../Dashboard/Blogs/AllBlogs";
 import DAllUsers from "../Dashboard/DAllUsers/DAllUsers";
 import DBanking from "../Dashboard/DBanking/DBanking";
-import AddNewBlog from "../Dashboard/Blogs/AddNewBlogs";
-import AllBlogs from "../Dashboard/Blogs/AllBlogs";
+import DUserProfile from "../Dashboard/DUserProfile/DUserProfile";
+import Dashboard from "../Dashboard/Layout/Dashboard";
+import About from "../pages/About/About";
+import Blogs from "../pages/Blogs/Blogs";
+import Contact from "../pages/Contact/Contact";
+import Error from "../pages/Error/Error";
+import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
+import MainLayout from "./MainLyout";
 
 const AppRoutes = () => {
   return (
@@ -43,7 +43,7 @@ const AppRoutes = () => {
           <Route index element={<DUserProfile />} />
           <Route path="allUsers" element={<DAllUsers />} />
           <Route path="banking" element={<DBanking />} />
-          <Route path="new-blog" element={<AddNewBlog />} />
+          <Route path="new-blog" element={<AddNewBlog2 />} />
           <Route path="all-blog" element={<AllBlogs />} />
         </Route>
         {/* Dashboard part end */}

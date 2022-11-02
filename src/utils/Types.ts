@@ -31,6 +31,14 @@ interface IBlogInputs {
   category: string;
   date: string;
 }
+
+interface FormInputProps {
+  name: string;
+  control: any;
+  label: string;
+  setValue?: any;
+  defaultValue?: string | null | undefined;
+}
 export type {
   locationProps,
   IFormInputs,
@@ -38,4 +46,5 @@ export type {
   IPassReset,
   IContactInputs,
   IBlogInputs,
+  FormInputProps,
 };

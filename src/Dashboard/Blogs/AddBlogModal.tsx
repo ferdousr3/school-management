@@ -1,12 +1,12 @@
 import * as React from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import CloseIcon from "@mui/icons-material/Close";
 import DialogTitle from "@mui/material/DialogTitle";
 import AddNewBlog from "./AddNewBlogs";
 import Title from "./Title";
-import { Box } from "@mui/material";
 
 type BlogModalProps = {
   open: boolean;
@@ -16,13 +16,7 @@ type BlogModalProps = {
 const AddBlogModal: React.FC<BlogModalProps> = ({ open, handleClose }) => {
   return (
     <>
-      <Dialog
-        open={open}
-        fullWidth
-        maxWidth="lg"
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
+      <Dialog open={open} fullWidth maxWidth="lg">
         <Box
           sx={{
             display: {
@@ -34,13 +28,16 @@ const AddBlogModal: React.FC<BlogModalProps> = ({ open, handleClose }) => {
           }}
         >
           <DialogTitle id="alert-dialog-title">
+            {/* title component */}
             <Title
               title="Add New Blog"
               description="Please fill all the field with valid information"
               position="left"
             />
           </DialogTitle>
+
           <Box sx={{ ml: 3, mt: "-10px" }}>
+            {/* dialog close modal */}
             <Button
               variant="contained"
               color="error"
@@ -53,6 +50,7 @@ const AddBlogModal: React.FC<BlogModalProps> = ({ open, handleClose }) => {
           </Box>
         </Box>
         <DialogContent>
+          {/* blog component from add new blog */}
           <AddNewBlog />
         </DialogContent>
       </Dialog>
