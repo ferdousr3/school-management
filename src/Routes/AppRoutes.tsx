@@ -2,9 +2,13 @@ import { Route, Routes } from "react-router-dom";
 import PasswordReset from "../auth/PasswordReset";
 import RequireAuth from "../auth/RequireAuth";
 import AddNewBlog2 from "../Dashboard/Blogs/AddNewBlogs";
-import AllBlogs from "../Dashboard/Blogs/AllBlogs";
 import DAllUsers from "../Dashboard/DAllUsers/DAllUsers";
 import DBanking from "../Dashboard/DBanking/DBanking";
+
+import BlogDetails from "../pages/Blogs/BlogDetails";
+// import Events from "../pages/Events/Events";
+import Events from "../pages/Events/Events";
+import AllBlogs from "../Dashboard/Blogs/AllBlogs";
 import DUserProfile from "../Dashboard/DUserProfile/DUserProfile";
 import Dashboard from "../Dashboard/Layout/Dashboard";
 import About from "../pages/About/About";
@@ -16,6 +20,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import MainLayout from "./MainLyout";
 
+
 const AppRoutes = () => {
   return (
     <>
@@ -25,6 +30,11 @@ const AppRoutes = () => {
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blogs />} />
+          <Route path="/events" element={<Events />} />
+          <Route
+          path="/blog/:blogId"
+          element={<BlogDetails />}
+        ></Route>
           <Route path="/contact" element={<Contact />} />
           <Route path="forgotPassword" element={<PasswordReset />} />
           <Route path="/login" element={<Login />} />

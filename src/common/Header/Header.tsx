@@ -90,6 +90,8 @@ export default function DrawerAppBar(props: Props) {
           <HeaderTop />
 
           <Container>
+            <Box sx={{md:{width:"100%", position:"relative"}}}>
+           
             <Toolbar sx={styles.toolbarStyle}>
               <IconButton
                 color="inherit"
@@ -221,6 +223,7 @@ export default function DrawerAppBar(props: Props) {
                 )}
               </Box>
             </Toolbar>
+            </Box>       
           </Container>
         </AppBar>
         {/* //mobile navbar */}

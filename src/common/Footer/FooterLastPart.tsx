@@ -20,7 +20,7 @@ const FooterLastPart = () => {
 
   return (
     <>
-      <Box sx={{ background: "#00080f", py: "1.5rem", mt: "2rem" }}>
+      <Box sx={{ background: "#00080f", py: "1.5rem" }}>
         <Container>
           <Grid container spacing={4}>
             <Grid
