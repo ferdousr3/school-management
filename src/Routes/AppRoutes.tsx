@@ -14,7 +14,11 @@ import DUserProfile from "../Dashboard/DUserProfile/DUserProfile";
 import DAllUsers from "../Dashboard/DAllUsers/DAllUsers";
 import DBanking from "../Dashboard/DBanking/DBanking";
 import BlogDetails from "../pages/Blogs/BlogDetails";
+// import Events from "../pages/Events/Events";
 import Events from "../pages/Events/Events";
+import AddNewBlog from "../Dashboard/Blogs/AddNewBlogs";
+import AllBlogs from "../Dashboard/Blogs/AllBlogs";
+
 
 const AppRoutes = () => {
   return (
@@ -31,7 +35,7 @@ const AppRoutes = () => {
           element={<BlogDetails />}
         ></Route>
           <Route path="/contact" element={<Contact />} />
-          <Route path="forgotPassword" element={<PasswordReset/>} />
+          <Route path="forgotPassword" element={<PasswordReset />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
         </Route>
@@ -48,6 +52,8 @@ const AppRoutes = () => {
           <Route index element={<DUserProfile />} />
           <Route path="allUsers" element={<DAllUsers />} />
           <Route path="banking" element={<DBanking />} />
+          <Route path="new-blog" element={<AddNewBlog />} />
+          <Route path="all-blog" element={<AllBlogs />} />
         </Route>
         {/* Dashboard part end */}
 

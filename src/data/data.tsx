@@ -12,6 +12,8 @@ import PersonIcon from "@mui/icons-material/Person";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 // import blogImage from '../assets/Blog/seo.png'
+import { FaBloggerB } from "react-icons/fa";
+
 const data = {
   schoolDetails: {
     name: "GreekCode",
@@ -188,6 +190,28 @@ const data = {
       text: "users",
       icon: <PeopleAltIcon />,
       path: "allUsers",
+    },
+    {
+      id: 4,
+      text: "Blog",
+      icon: <FaBloggerB />,
+      path: "all-blog",
+    },
+  ],
+  blogCategory: [
+    {
+      id: "JavaScript",
+      label: "JavaScript",
+    },
+
+    {
+      id: "TypeScript",
+      label: "TypeScript",
+    },
+
+    {
+      id: "Java",
+      label: "Java",
     },
   ],
 };

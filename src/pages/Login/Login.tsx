@@ -30,19 +30,29 @@ export default function Login() {
   const location: locationProps = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  /**
+   * after login redirect path
+   */
   React.useEffect(() => {
     if (user) {
       navigate(from, { replace: true });
     }
   }, [user, navigate, from]);
 
-  // react hooks from
+  /**
+   * react hooks from
+   */
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<IFormInputs>({ resolver: yupResolver(LoginSchema) });
-
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(LoginSchema),
+    mode: "onChange",
+  });
+  /**
+   * from submit handler
+   */
   const fromSubmitHandler: SubmitHandler<IFormInputs> = async (
     data: IFormInputs
   ) => {
@@ -106,6 +116,7 @@ export default function Login() {
                 )}
               />
             </Grid>
+            {/* firebase error handler */}
             {error && (
               <Box sx={styles.errorMessages} component="p">
                 {
@@ -116,7 +127,7 @@ export default function Login() {
               </Box>
             )}
           </Grid>
-
+          {/* login button */}
           <LoadingButton
             type="submit"
             fullWidth
@@ -126,6 +137,7 @@ export default function Login() {
           >
             Sign In
           </LoadingButton>
+          {/*others links */}
           <Grid container>
             <Grid item xs>
               <CustomLink text="Forgot password?" url="/forgotPassword" />

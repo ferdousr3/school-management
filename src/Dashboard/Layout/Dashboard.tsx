@@ -40,16 +40,26 @@ function DashboardContent() {
     setAnchorEl(event.currentTarget);
   };
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const theme = useTheme();
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  /**
+   * open drawer state
+   */
   const [open, setOpen] = React.useState(false);
+  /**
+   * open drawer function
+   */
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
-  const navigate = useNavigate();
-  const theme = useTheme();
+  /**
+   * logout method
+   */
   const handleLogOut = (): void => {
     signOut(auth);
   };

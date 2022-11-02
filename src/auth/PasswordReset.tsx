@@ -16,13 +16,19 @@ import { FIREBASE_ERRORS_PASS } from "../utils/FirebaseErrors";
 const PasswordReset = () => {
   const [sendPasswordResetEmail, sending, error] =
     useSendPasswordResetEmail(auth);
-  // react hooks from
+
+  /**
+   * * react hooks from
+   */
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm<IPassReset>({ resolver: yupResolver(PassReset) });
 
+  /**
+   * * from handle submit
+   */
   const fromSubmitHandler: SubmitHandler<IPassReset> = async (
     data: IPassReset
   ) => {

@@ -13,6 +13,11 @@ declare module "@mui/material/styles" {
       titleGrayDark: string;
       borderColor: string;
       transparent: string;
+      error: string;
+      bgGray: string;
+    };
+    myShadows: {
+      primary: string;
     };
   }
 
@@ -26,6 +31,11 @@ declare module "@mui/material/styles" {
       titleGrayDark: React.CSSProperties["color"];
       borderColor: React.CSSProperties["color"];
       transparent: React.CSSProperties["color"];
+      error: React.CSSProperties["color"];
+      bgGray: React.CSSProperties["color"];
+    };
+    myShadows: {
+      primary: React.CSSProperties["box-shadow"];
     };
   }
 

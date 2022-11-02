@@ -25,8 +25,6 @@ import { useNavigate } from "react-router-dom";
 import { SignUpSchema } from "../../utils/YupSchema";
 import { FIREBASE_ERRORS } from "../../utils/FirebaseErrors";
 
-
-
 const SignUp: FC = () => {
   const [createUserWithEmailAndPassword, user, emailLoading, emailError] =
     useCreateUserWithEmailAndPassword(auth);
@@ -46,7 +44,10 @@ const SignUp: FC = () => {
     // watch,
     reset,
     formState: { errors },
-  } = useForm<IFormInputs>({ resolver: yupResolver(SignUpSchema) });
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(SignUpSchema),
+    mode: "onChange",
+  });
 
   // from submit
   const fromSubmitHandler: SubmitHandler<IFormInputs> = async (
@@ -133,6 +134,7 @@ const SignUp: FC = () => {
                 )}
               />
             </Grid>
+            {/* error handle with firebase */}
             {(emailError || updateError) && (
               <Box sx={styles.errorMessages} component="p">
                 {
@@ -144,6 +146,7 @@ const SignUp: FC = () => {
               </Box>
             )}
           </Grid>
+          {/* sign up button */}
           <LoadingButton
             type="submit"
             fullWidth
@@ -153,6 +156,7 @@ const SignUp: FC = () => {
           >
             Sign Up
           </LoadingButton>
+          {/* others links */}
           <Grid container justifyContent="flex-end">
             <Grid item>
               <CustomLink
