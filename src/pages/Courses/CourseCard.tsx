@@ -57,7 +57,7 @@ export default function RecipeReviewCard() {
       .then((res) => res.json())
       .then((data) => setEvents(data));
   });
-  console.log(events)
+  // console.log(events)
   return (
   <>
     {events.map((event: eventsData)=>

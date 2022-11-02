@@ -1,24 +1,24 @@
 [
   {
-    "insID":1,
+    "id":1,
     "name": "David warner",
     "designation":"Head of department",
     "img": "https://i.ibb.co/nBpdJHr/inst2.jpg"
   },
   {
-    "insID":2,
+    "id":2,
     "name": "Lizard",
     "designation":"Instructor",
     "img": "https://i.ibb.co/R7q4RmK/inst1.jpg"
   },
   {
-    "insID":3,
+    "id":3,
     "name": "David warner",
     "designation":"Head of department",
     "img": "https://i.ibb.co/88wvjjR/inst3.jpg"
   },
   {
-    "insID":4,
+    "id":4,
     "name": "Lizard",
     "designation":"Head of department",
     "img": "https://i.ibb.co/PFPTFh4/inst4.jpg"

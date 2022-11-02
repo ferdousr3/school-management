@@ -1,17 +1,28 @@
 import { Container, Typography, Box, Grid } from "@mui/material";
-// import React, { useEffect, useState } from "react";
-import InstructorCards from "../Instructors/InstrauctorCards";
+import React, { useEffect, useState } from "react";
+import InstructorCards from "./InstructorCards";
 
 // type insData = {
 //   insID?: number;
 // }
+type insCardData = {
+  id: number;
+  name?: string;
+  designation?: string;
+  img?: string;
+  
+};
 const Instructors = () => {
-  // const [instructors, setInstructors] = useState([]);
-  // useEffect(() => {
-  //   fetch("InstructorsData.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setInstructors(data));
-  // }, []);
+  const [instructors, setInstructors] = useState<[] | insCardData[]>([]);
+  useEffect(() => {
+    fetch("InstructorsData.json")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.name)
+        setInstructors(data)
+      });
+  }, []);
+  console.log(typeof instructors);
   return (
     <>
       <Container>
@@ -23,16 +34,15 @@ const Instructors = () => {
             The pie and we know flipper lives in a worl the clouds away
           </Typography>
           </Box>
-          <img src="https://i.ibb.co/7vk5Q1D/instra.png" alt="instra" />
+          <img src="https://i.ibb.co/7vk5Q1D/instra.png" alt="images" />
           <Box>
-            <Grid container spacing={3} sx={{marginTop:'2rem'}}>
-              {/* <Grid item xs={12} md={3}> */}
-                {/* {instructors.map((instructor, key:number) => ( */}
-                {/* <InstructorCards instructor={instructor} key={instructor.{insID:insData}} /> */}
-                <InstructorCards />
-                {/* ))} */}
+            <Grid  sx={{marginTop:'2rem'}}>
+              <Grid container spacing={3}>
+                {instructors.map((instructor) => (
+                <InstructorCards {...instructor} key={instructor.id} />
+                ))}
               </Grid>
-            {/* </Grid> */}
+            </Grid>
           </Box>
         </Box>
       </Container>
