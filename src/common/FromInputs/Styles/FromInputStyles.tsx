@@ -15,6 +15,9 @@ const styles = sxStyles({
     "& small": {
       color: theme.extraColor.error,
     },
+    "& .MuiTextField-root": {
+      border: "none",
+    },
   }),
 });
 

@@ -8,22 +8,22 @@ type InputFileUploadProps = {
 };
 
 const InputFileUpload: React.FC<InputFileUploadProps> = ({ name }) => {
-  const { control } = useFormContext();
+  const { control,register } = useFormContext();
   return (
     <>
       <Box sx={styles.imageInput}>
         <Controller
           name={name}
           control={control}
-          // defaultValue=""
+          defaultValue=""
           render={({ field, fieldState: { error }, formState }) => (
             <>
               <input
                 type="file"
-                onChange={(e) => {
-                  field.onChange(e.target.files);
-                }}
-                multiple
+                // onChange={(e) => {
+                //   field.onChange(e.target.files);
+                // }}
+                {...register('image')}
               />
               <br />
               {<small>{error ? error.message : null}</small>}

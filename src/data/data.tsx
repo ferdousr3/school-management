@@ -197,18 +197,22 @@ const data = {
   ],
   blogCategory: [
     {
-      id: "JavaScript",
-      label: "JavaScript",
+      id: "ui Design",
+      label: "ui design",
     },
 
     {
-      id: "TypeScript",
-      label: "TypeScript",
+      id: "programming",
+      label: "programming",
     },
 
     {
-      id: "Java",
-      label: "Java",
+      id: "students",
+      label: "students",
+    },
+    {
+      id: "education",
+      label: "Education",
     },
   ],
 };

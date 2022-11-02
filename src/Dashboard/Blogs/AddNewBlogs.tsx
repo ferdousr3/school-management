@@ -3,12 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import AddIcon from "@mui/icons-material/Add";
 import TodayIcon from "@mui/icons-material/Today";
 import { LoadingButton } from "@mui/lab";
-import {
-  Box,
-  // Typography,
-  Container,
-  Grid,
-} from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -167,7 +162,7 @@ const AddNewBlog: FC = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 {/* blog date  */}
-                <Chip icon={<TodayIcon />} label={fullDate} />
+                <Chip color="primary" icon={<TodayIcon />} label={fullDate} />
               </Grid>
               <Grid item xs={12}>
                 {/* blog textarea */}

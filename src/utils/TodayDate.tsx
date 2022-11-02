@@ -19,23 +19,24 @@
 const monthIndex: number = new Date().getMonth();
 const getMonthName = (monthIndex: number): string => {
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
   return months[monthIndex];
 };
 const monthName: string = getMonthName(monthIndex);
 
 const date = new Date();
-const todayDate = `${monthName} ${date.getDate()}, ${date.getFullYear()}`;
+const todayDate = ` ${date.getDate()} ${monthName} , ${date.getFullYear()}`;
 
 export default todayDate;

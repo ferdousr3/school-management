@@ -5,5 +5,5 @@ export const defaultValues = {
   image: "",
   description: "",
   source: "",
-  category: "Java",
+  category: "programming",
 };
