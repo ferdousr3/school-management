@@ -65,7 +65,7 @@ function DashboardContent() {
   };
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} sx={styles.mainToolbar}>
         <Toolbar
           sx={{
             pr: "24px", // keep right padding when drawer closed
@@ -78,6 +78,7 @@ function DashboardContent() {
             onClick={toggleDrawer}
             sx={{
               marginRight: "36px",
+              color:theme.palette.secondary.main,
               ...(open && { display: "none" }),
             }}
           >
@@ -169,10 +170,10 @@ function DashboardContent() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" sx={styles.drawerMain} open={open}>
         <Toolbar sx={styles.toolbar}>
           <IconButton onClick={toggleDrawer}>
-            <ChevronLeftIcon />
+            <ChevronLeftIcon sx={{color:theme.palette.secondary.main}} />
           </IconButton>
         </Toolbar>
         {/* <Divider /> */}
@@ -203,7 +204,7 @@ function DashboardContent() {
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           <Outlet />
         </Container>
-        <Copyright />
+        {/* <Copyright /> */}
       </Box>
     </Box>
   );

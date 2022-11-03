@@ -12,6 +12,7 @@ import AddBlogModal from "./AddBlogModal";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import {
+  styles,
   Search,
   SearchIconWrapper,
   StyledInputBase,
@@ -81,11 +82,6 @@ const rows = [
   createData("Ireland", "IE", 4857000, 70273),
   createData("Mexico", "MX", 126577691, 1972550),
   createData("Japan", "JP", 126317000, 377973),
-  createData("France", "FR", 67022000, 640679),
-  createData("United Kingdom", "GB", 67545757, 242495),
-  createData("Russia", "RU", 146793744, 17098246),
-  createData("Nigeria", "NG", 200962417, 923768),
-  createData("Brazil", "BR", 210147125, 8515767),
 ];
 
 // type AllBlogsProps = {
@@ -120,28 +116,19 @@ const AllBlogs: React.FC = () => {
 
   return (
     <>
-      <Box sx={{mb:4}}>
-        <Title title="All Blogs" description="Add your blog, View blogs and edit" position="left" />
+      {/* page title */}
+      <Box sx={{ mb: 4 }}>
+        <Title
+          title="All Blogs"
+          description="Add your blog, View blogs and edit"
+          position="left"
+        />
       </Box>
-      <Paper sx={{ width: "100%", boxShadow: theme.myShadows.primary }}>
+      {/* main section */}
+      <Paper sx={styles.mainSection}>
         <TableContainer sx={{ maxHeight: 440 }}>
-          <Box
-            sx={{
-              py: 2,
-              display: { sm: "flex" },
-              justifyContent: "space-between",
-              alignItems: "center",
-              mx: 2,
-            }}
-          >
-            <Box
-              sx={{
-                display: { sm: "flex" },
-                justifyContent: "space-between",
-                alignItems: "center",
-                width: { md: "50%" },
-              }}
-            >
+          <Box sx={styles.topSection}>
+            <Box sx={styles.topSectionLeft}>
               <Box>
                 <Typography component="h2" color="primary" fontWeight="700">
                   Total Blog :

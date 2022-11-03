@@ -16,6 +16,7 @@ interface AppBarProps extends MuiAppBarProps {
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
+  border: "none",
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
@@ -58,6 +59,11 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 const styles = sxStyles({
+  mainToolbar: (theme: Theme) => ({
+    boxShadow: theme.myShadows.primary,
+    backgroundColor: theme.extraColor.white,
+    border: "none",
+  }),
   menuDesign: (theme: Theme) => ({
     elevation: 0,
     sx: {
@@ -95,6 +101,9 @@ const styles = sxStyles({
     flexGrow: 1,
     height: "100vh",
     overflow: "auto",
+  }),
+  drawerMain: (theme: Theme) => ({
+    backgroundColor: theme.extraColor.white,
   }),
 });
 

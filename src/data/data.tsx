@@ -12,7 +12,12 @@ import PersonIcon from "@mui/icons-material/Person";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 // import blogImage from '../assets/Blog/seo.png'
-import { FaBloggerB } from "react-icons/fa";
+import {
+  FaBloggerB,
+  FaPaypal,
+  FaCalendarCheck,
+  FaEnvelopeOpenText,
+} from "react-icons/fa";
 
 const data = {
   schoolDetails: {
@@ -93,7 +98,7 @@ const data = {
   ],
   about: {
     description: `Since ancient times, Dinajpur district has been politically, economically, socially and educationally underdeveloped compared to other regions. Dinajpur has been situated as an unbroken township since ancient times at the north-western edge of Barendra land. We get a lot of information about the educational system of Dinajpur during the Hindu period. Although there are no obstacles in the field of education for the Brahmins of Dinajpur, a large population here has been out of formal education for a long time due to the fact that the local tribals are considered very low-born.`,
-    
+
     items: [
       {
         id: 1,
@@ -196,6 +201,24 @@ const data = {
       text: "Blog",
       icon: <FaBloggerB />,
       path: "all-blog",
+    },
+    {
+      id: 5,
+      text: "Event",
+      icon: <FaCalendarCheck />,
+      path: "all-Event",
+    },
+    {
+      id: 6,
+      text: "Payment",
+      icon: <FaPaypal />,
+      path: "all-Payment",
+    },
+    {
+      id: 7,
+      text: "Mail",
+      icon: <FaEnvelopeOpenText />,
+      path: "all-Payment",
     },
   ],
   blogCategory: [

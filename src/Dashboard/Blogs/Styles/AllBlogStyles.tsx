@@ -76,6 +76,23 @@ const styles = sxStyles({
       sm: "1rem 2rem",
     },
   }),
+  mainSection: (theme: Theme) => ({
+    width: "100%",
+    boxShadow: theme.myShadows.primary,
+  }),
+  topSection: (theme: Theme) => ({
+    py: 2,
+    display: { sm: "flex" },
+    justifyContent: "space-between",
+    alignItems: "center",
+    mx: 2,
+  }),
+  topSectionLeft: (theme: Theme) => ({
+    display: { sm: "flex" },
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: { md: "50%" },
+  }),
 });
 
 export { styles, Search, SearchIconWrapper, StyledInputBase };
