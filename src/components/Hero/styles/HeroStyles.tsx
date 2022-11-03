@@ -22,6 +22,7 @@ const styles = sxStyles({
       sm: "center ",
       xs: "center center ",
     },
+    marginTop:"9rem", 
   }),
   heroMainContainer: (theme: Theme) => ({
     maxWidth: {

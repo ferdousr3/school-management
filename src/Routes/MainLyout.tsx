@@ -12,7 +12,7 @@ const MainLayout = () => {
       </header>
       <Box
         component="main"
-        sx={{ mt: { xs: "6rem",sm:'3rem', md: "9rem" }, pb: "4rem" }}
+        sx={{ mt: { xs: "",sm:'', md: "" }, pb: "4rem" }}
       >
         <Outlet />
       </Box>
