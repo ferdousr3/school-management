@@ -10,6 +10,7 @@ import Person2Icon from "@mui/icons-material/Person2";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FolderIcon from "@mui/icons-material/Folder";
 import { Link } from "react-router-dom";
+import { mainLink } from "../../utils/ApiLInk";
 
 interface BlogPosts {
   blogID?: number;
@@ -17,16 +18,16 @@ interface BlogPosts {
   author?: string;
   date?: string;
   description?: string;
-  img?: string;
+  image?: string;
   source?: string;
 }
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    const url = "BlogData.json";
-    fetch(url)
+    const baseUrl = `${mainLink}/blog`;
+    fetch(baseUrl)
       .then((res) => res.json())
-      .then((data) => setPosts(data));
+      .then((data) => setPosts(data.data.blogs));
   }, []);
 
   return (
@@ -47,7 +48,7 @@ const Blog = () => {
                         {post.title}
                       </Typography>
                       <img
-                        src={post.img}
+                        src={post.image}
                         alt="images"
                         width="100%"
                         height="auto"
