@@ -69,6 +69,7 @@ const styles = sxStyles({
     flexDirection: "column",
     alignItems: "center",
     borderRadius: "6px",
+    fontFamily: `${theme.myFont} !important`,
     // border: {
     //   sm: `1px solid ${theme.extraColor.borderColor}`,
     // },

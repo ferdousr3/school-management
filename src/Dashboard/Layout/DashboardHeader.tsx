@@ -6,7 +6,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import { useNavigate } from "react-router-dom";
-import { Avatar, Button, Menu, MenuItem } from "@mui/material";
+import { Button, Menu, MenuItem } from "@mui/material";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -14,8 +14,6 @@ import auth from "../../config/firebase.config";
 import { signOut } from "firebase/auth";
 import { PaperProps } from "./PaperProps";
 import { BiUndo } from "react-icons/bi";
-import { FaUserCircle } from "react-icons/fa";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PersonIcon from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
@@ -83,16 +81,6 @@ const DashboardHeader: React.FC = () => {
                 aria-haspopup="true"
                 aria-expanded={menuOpen ? "true" : undefined}
               >
-                {/* <Avatar
-                  sx={{
-                    width: 24,
-                    height: 24,
-                    textTransform: "uppercase",
-                    backgroundColor: theme.palette.secondary.main,
-                  }}
-                >
-                  {user?.displayName?.slice(0, 1)}
-                </Avatar> */}
                 <PersonIcon sx={{ color: theme.palette.secondary.main }} />
               </IconButton>
             </Box>

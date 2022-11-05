@@ -47,14 +47,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const DrawerProfileCard: React.FC = () => {
   const theme = useTheme();
   const [user] = useAuthState(auth);
+
   return (
     <>
       <Box
         sx={{
           textAlign: "center",
-          // backgroundColor: theme.extraColor.white,
-          // boxShadow: theme.myShadows.primary,
-          // m: "24px",
           p: "24px",
         }}
       >

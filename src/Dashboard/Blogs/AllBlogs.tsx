@@ -1,12 +1,5 @@
 import * as React from "react";
 import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import AddBlogModal from "./AddBlogModal";
 import AddIcon from "@mui/icons-material/Add";
@@ -18,83 +11,77 @@ import {
   StyledInputBase,
 } from "./Styles/AllBlogStyles";
 import Title from "./Title";
-
-interface Column {
-  id: "name" | "code" | "population" | "size" | "density";
-  label: string;
-  minWidth?: number;
-  align?: "right";
-  format?: (value: number) => string;
-}
-
-const columns: Column[] = [
-  { id: "name", label: "Title", minWidth: 170 },
-  { id: "code", label: "ISO\u00a0Code", minWidth: 100 },
-  {
-    id: "population",
-    label: "View",
-    minWidth: 170,
-    align: "right",
-    format: (value: number) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "size",
-    label: "Edit",
-    minWidth: 170,
-    align: "right",
-    format: (value: number) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "density",
-    label: "Delete",
-    minWidth: 170,
-    align: "right",
-    format: (value: number) => value.toFixed(2),
-  },
-];
+import { useQuery } from "@tanstack/react-query";
+import { mainLink } from "../../utils/ApiLInk";
+import Loadings from "../../common/Loading/Loadings";
+import DataTable from "../../common/DataTable/DataTable";
+import { GridColDef } from "@mui/x-data-grid";
 
 interface Data {
-  name: string;
-  code: string;
-  population: number;
-  size: number;
-  density: number;
+  status?: string;
+  data: {
+    total?: number;
+    page?: string | null;
+    blogs: {
+      title?: string;
+      description?: string;
+      author?: string;
+      category?: string;
+      date?: string;
+      image?: string;
+      slug?: string;
+      source?: string;
+    }[];
+  };
 }
-
-function createData(
-  name: string,
-  code: string,
-  population: number,
-  size: number
-): Data {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
-
-const rows = [
-  createData("India", "IN", 1324171354, 3287263),
-  createData("China", "CN", 1403500365, 9596961),
-  createData("Italy", "IT", 60483973, 301340),
-  createData("United States", "US", 327167434, 9833520),
-  createData("Canada", "CA", 37602103, 9984670),
-  createData("Australia", "AU", 25475400, 7692024),
-  createData("Germany", "DE", 83019200, 357578),
-  createData("Ireland", "IE", 4857000, 70273),
-  createData("Mexico", "MX", 126577691, 1972550),
-  createData("Japan", "JP", 126317000, 377973),
-];
-
-// type AllBlogsProps = {
-
-// };
 
 const AllBlogs: React.FC = () => {
+  const columns = [
+    {
+      field: "title",
+      headerName: "Title",
+      flex: 1,
+    },
+    { field: "author", headerName: "Author", flex: 1 },
+    { field: "category", headerName: "Category", flex: 1 },
+    { field: "date", headerName: "Date", flex: 1 },
+    {
+      field: "status",
+      headerName: "Status",
+      cellClassName: "status-column--cell",
+      flex: 1,
+    },
+  ];
+
+  const userTableStyles = {
+    height: "500px",
+  };
   const theme = useTheme();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
   const [open, setOpen] = React.useState(false);
+  const url = `${mainLink}/blog`;
+  /**
+   * data fetching with react query
+   */
+  const { data, isLoading, isError, error, refetch } = useQuery<Data, Error>(
+    ["blogs"],
+    () => fetch(url).then((res) => res.json())
+  );
+  const blog = data?.data?.blogs;
+  /**
+   * if take some times for fetching data from API
+   */
+  console.log(data?.data?.blogs);
+  if (isLoading) {
+    return <Loadings />;
+  }
+  /**
+   * if any errors fetching data from API
+   */
+  // if (isError) {
+  //   return <div>{error}</div>;
+  // }
 
+  const totalBlogs = data?.data?.total;
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -103,124 +90,64 @@ const AllBlogs: React.FC = () => {
     setOpen(false);
   };
 
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
   return (
     <>
       {/* page title */}
       <Box sx={{ mb: 4 }}>
         <Title
-          title="All Blogs"
-          description="Add your blog, View blogs and edit"
+          title="Blogs"
+          description="List of Blogs for Future Reference"
           position="left"
         />
       </Box>
       {/* main section */}
       <Paper sx={styles.mainSection}>
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Box sx={styles.topSection}>
-            <Box sx={styles.topSectionLeft}>
-              <Box>
-                <Typography component="h2" color="primary" fontWeight="700">
-                  Total Blog :
-                  <Box
-                    sx={{ color: theme.palette.secondary.main }}
-                    component="span"
-                  >
-                    10
-                  </Box>
-                </Typography>
-              </Box>
-
-              <Box component="div" sx={{ ml: { sm: "50px", md: 0 } }}>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ "aria-label": "search" }}
-                  />
-                </Search>
-              </Box>
+        <Box sx={styles.topSection}>
+          <Box sx={styles.topSectionLeft}>
+            <Box>
+              <Typography component="h2" color="primary" fontWeight="700">
+                Total Blogs :
+                <Box
+                  sx={{ color: theme.palette.secondary.main, ml: 0.5 }}
+                  component="span"
+                >
+                  {totalBlogs}
+                </Box>
+              </Typography>
             </Box>
 
-            <Button
-              sx={{
-                borderRadius: "6px !important",
-                py: 1,
-              }}
-              color="secondary"
-              endIcon={<AddIcon />}
-              variant="outlined"
-              onClick={handleClickOpen}
-            >
-              Add Blog
-            </Button>
+            <Box component="div" sx={{ ml: { sm: "50px", md: 0 } }}>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
+            </Box>
           </Box>
 
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{
-                      top: 57,
-                      minWidth: column.minWidth,
-                      borderTop: "1px solid rgba(224, 224, 224, 1)",
-                    }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => {
-                  return (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.code}
-                    >
-                      {columns.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.format && typeof value === "number"
-                              ? column.format(value)
-                              : value}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
+          <Button
+            sx={{
+              borderRadius: "6px !important",
+              py: 1,
+            }}
+            color="secondary"
+            endIcon={<AddIcon />}
+            variant="outlined"
+            onClick={handleClickOpen}
+          >
+            Add Blog
+          </Button>
+        </Box>
+        <DataTable
+          rows={blog}
+          columns={columns}
+          loading={!blog?.length}
+          sx={userTableStyles}
+          getRowId={(row: any) => row._id}
         />
       </Paper>
 

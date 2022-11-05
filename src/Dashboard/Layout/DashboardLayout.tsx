@@ -6,7 +6,6 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
 import { Outlet } from "react-router-dom";
 
 import {
@@ -33,7 +32,7 @@ export default function DashboardLayout() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", fontFamily: `${theme.myFont} !important ` }}>
       <AppBar position="fixed" open={open} sx={styles.mainToolbar}>
         <Toolbar>
           {/* drawer open and close button */}
@@ -68,7 +67,7 @@ export default function DashboardLayout() {
         <DrawerItems />
       </Drawer>
       {/* main drawer and page outlet */}
-      <Main open={open} sx={styles.main}>
+      <Main open={open}>
         <DrawerHeader />
         <Outlet />
       </Main>

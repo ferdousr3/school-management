@@ -19,6 +19,7 @@ export enum themePalette {
   ORANGE = "#e05a36",
   TEXT_ERROR = "#d32f2f",
   FONT_GLOBAL = "'Lato', sans-serif",
+  FONT_GLOBAL2 = "'Source Sans Pro', sans-serif",
 }
 
 const theme = createTheme({
@@ -34,6 +35,7 @@ const theme = createTheme({
     borderColor: themePalette.BORDER_COLOR,
     error: themePalette.TEXT_ERROR,
   },
+  myFont: themePalette.FONT_GLOBAL2,
   myShadows: {
     primary: `0px 0px 1px rgba(38, 78, 118, 0.35)`,
   },
@@ -51,6 +53,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: themePalette.FONT_GLOBAL,
+
     footerTitle: {
       color: themePalette.GRAY_TITLE,
       fontSize: "1.25rem",

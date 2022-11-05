@@ -18,12 +18,13 @@ const Title: React.FC<TitleProps> = ({ title, description, position }) => {
           "& h1": {
             fontSize: "1.2rem",
             color: theme.palette.primary.main,
-            fontWeight: 800,
+            fontWeight: 900,
+            textTransform: "uppercase",
           },
           "& p": {
             fontSize: "1rem",
             color: theme.extraColor.linkBlack,
-            fontWeight: 500,
+            fontWeight: 600,
           },
         }}
       >
