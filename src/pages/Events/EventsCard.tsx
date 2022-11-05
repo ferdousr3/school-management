@@ -49,6 +49,7 @@ export default function RecipeReviewCard() {
     description?: string;
     img?: string;
     time?: string;
+    duration?:string;
   }
   // json Data load
   const [events, setEvents] = useState([]);
@@ -61,7 +62,7 @@ export default function RecipeReviewCard() {
   return (
   <>
     {events.map((event: eventsData)=>
-  <Grid item xs={12} padding={2} md={6}>
+  <Grid item xs={12} padding={2} md={6} sx={{textAlign: "left"}}>
     <Card>
       {/* <CardHeader
         avatar={
@@ -128,6 +129,9 @@ export default function RecipeReviewCard() {
           fontSize="16px"
         >
           {event.description}
+        </Typography>
+        <Typography>
+         COURSE DURATION: {event.duration}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

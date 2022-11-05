@@ -6,7 +6,8 @@
      "date": "18 Sep, 2018",
      "time":"9.00-10.00",
      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s…",
-     "img":"https://i.ibb.co/3BTc26Z/service-13.jpg"
+     "img":"https://i.ibb.co/3BTc26Z/service-13.jpg",
+     "duration":"12 week"
      },
     {
      "blogID": 2, 
@@ -15,7 +16,8 @@
      "date": "18 Sep, 2018",
      "time":"9.00-10.00",
      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s…",
-     "img":"https://i.ibb.co/3BTc26Z/service-13.jpg"
+     "img":"https://i.ibb.co/3BTc26Z/service-13.jpg",
+     "duration":"12 week"
    },
     {
      "E_ID": 3, 
@@ -24,7 +26,8 @@
      "date": "9.00-10.00",
      "time":"9.00-10.00",
      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s…",
-     "img":"https://i.ibb.co/3BTc26Z/service-13.jpg"
+     "img":"https://i.ibb.co/3BTc26Z/service-13.jpg",
+     "duration":"12 week"
      },
     {
      "blogID": 4, 
@@ -33,6 +36,7 @@
      "date": "18 Sep, 2018",
      "time":"9.00-10.00",
      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s…",
-     "img":"https://i.ibb.co/3BTc26Z/service-13.jpg"
+     "img":"https://i.ibb.co/3BTc26Z/service-13.jpg",
+     "duration":"12 week"
    }
  ]
