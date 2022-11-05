@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 // import { red } from '@mui/material/colors';
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 // import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Box } from "@mui/system";
@@ -143,11 +143,11 @@ export default function RecipeReviewCard() {
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon />
+          {/* <ExpandMoreIcon /> */}
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        {/* <CardContent>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
             Heat 1/2 cup of the broth in a pot until simmering, add saffron and
@@ -175,7 +175,7 @@ export default function RecipeReviewCard() {
             Set aside off of the heat to let rest for 10 minutes, and then
             serve.
           </Typography>
-        </CardContent>
+        </CardContent> */}
       </Collapse>
     </Card>
     </Grid>

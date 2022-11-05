@@ -9,11 +9,11 @@ export function sxStyles<T extends SxStyles>(arg: T): T {
 const drawerWidth = 280;
 const styles = sxStyles({
   toolbarStyle: (theme: Theme) => ({
-    py: 1,
+    py: 1.5,
     bgcolor: theme.palette.primary.main,
     borderRadius: 1.5,
     position: "absolute",
-    width:"76%",
+    width:"76.2%",
     left:"12%",
   }),
   drawerMenuStyle: (theme: Theme) => ({
@@ -34,7 +34,7 @@ const styles = sxStyles({
     },
     justifyContent: "space-between",
     alignItems: "center",
-    py: "1rem",
+    py: ".85rem",
     px: {
       xs: 0,
       sm: "1rem",

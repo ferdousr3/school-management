@@ -12,7 +12,7 @@ const NewEventSection = () => {
   return (
     <>
       <Box>
-        <Grid container>
+        <Grid container sx={{mt: "5rem"}}>
           {/* left side */}
           <Grid
             item

@@ -16,7 +16,7 @@ const Hero = () => {
               variant="heroTitle"
               sx={{ fontSize: { xs: "2rem", sm: "4.375rem" } }}
             >
-              100+
+              400+
             </Typography>
             <Typography
               sx={styles.heroSecondTitle}

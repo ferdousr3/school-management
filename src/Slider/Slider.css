@@ -1,0 +1,60 @@
+/* body {
+    background: #F3F7FD;
+  } */
+  .App {
+    width: 83%;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  
+  .slick-slide > div {
+    margin: 0 10px;
+  }
+  .slick-list {
+    margin: 0 -10px;
+  }
+  
+  .card {
+    border: 1px solid #fff;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex !important;
+    height: 100%;
+    color: #000;
+    cursor: pointer;
+    align-items: center;
+  }
+  
+  .card-top h1 {
+    font-size: 0.9rem;
+    margin: 20px;
+  }
+  
+  .card-top > img {
+    height: 150px;
+    object-fit: cover;
+    background: black;
+    border-radius: 50%;
+  }
+  
+  .card-bottom {
+    margin: 10px 20px;
+  }
+  
+  .category {
+    position: relative;
+    width: 45%;
+  }
+  .category::before {
+    content: '';
+    background: rgb(255, 61, 61);
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    height: 2px;
+  }
+  .slick-prev:before, .slick-next:before{
+    color: #E05A36;
+  }

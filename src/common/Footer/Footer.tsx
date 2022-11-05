@@ -12,7 +12,7 @@ const Footer: React.FC<{}> = () => {
   return (
     <>
       {/* footer first four part */}
-      <Box sx={{ bgcolor: theme.extraColor.liteGray, pt: 4 }}>
+      <Box sx={{ bgcolor: theme.extraColor.liteGray, py: '3rem' }}>
         <Container>
           <Grid container spacing={4}>
             <Grid item xs={12} sm={6} md={3} lg={3} xl={3}>
