@@ -13,8 +13,10 @@ const styles = sxStyles({
     bgcolor: theme.palette.primary.main,
     borderRadius: 1.5,
     position: "absolute",
-    width:"76.2%",
-    left:"12%",
+    width:"81%",
+    left:"9%",
+    // width:"76.2%",
+    // left:"12%",
   }),
   drawerMenuStyle: (theme: Theme) => ({
     display: { xs: "block", md: "none" },

@@ -74,7 +74,7 @@ const NewEventSection = () => {
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-              py: "4rem",
+              pt: "4rem",
               display: "flex",
               alignItems: "center",
             }}

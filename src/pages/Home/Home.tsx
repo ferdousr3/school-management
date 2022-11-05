@@ -5,6 +5,8 @@ import Hero from "../../components/Hero/Hero";
 import Courses from "../Courses/Courses";
 import Instructors from "../Instructors/Instructors";
 import Reviews from "../Reviews/Reviews";
+import Timeline from "../Timeline/Timeline";
+import TimelinePlate from "../Timeline/TimelinePlate";
 import NewEventSection from "./NewEventSection";
 
 const Home: React.FC<{}> = () => {
@@ -16,10 +18,20 @@ const Home: React.FC<{}> = () => {
       <Box sx={{ pb: "2.5rem", mb: "4rem" }} component="section">
         <Hero />
       </Box>
+
+      {/* TimelinePlate section */}
+      <Box sx={{}} component="section">
+        <TimelinePlate />
+      </Box>
+            {/* Timeline section */}
+            <Box sx={{}} component="section">
+        <Timeline />
+      </Box>
       {/* Courses section */}
       <Box sx={{}} component="section">
         <Courses />
       </Box>
+       {/* Instructors section */}
       <Box sx={{}} component="section">
         <Instructors />
       </Box>
