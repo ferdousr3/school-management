@@ -13,14 +13,14 @@ export default function OrientationList() {
       aria-label="contacts"
     >
       <ListItem sx={{display:'grid'}}>
-        <ListItemButton sx={{backgroundColor:'#E05A36',marginBottom:"1rem"}}>
+        <ListItemButton sx={{backgroundColor:'#244A58',marginBottom:"1rem", flexWrap:{xs:'wrap'}}}>
           <ListItemIcon>
-            <StarIcon sx={{color:""}} />
+            <StarIcon sx={{color:"#fff"}} />
           </ListItemIcon>
           <ListItemText primary="Orientation Start: 1st january 2023" />
         </ListItemButton>
-        <ListItemButton sx={{backgroundColor:'#E05A36'}}>
-          <ListItemIcon>
+        <ListItemButton sx={{backgroundColor:'#244A58', flexWrap:{xs:'wrap'}}}>
+          <ListItemIcon sx={{color:"#fff"}}>
             <StarIcon sx={{color:""}} />
           </ListItemIcon>
           <ListItemText primary="Orientation End: 1st january 2023" />

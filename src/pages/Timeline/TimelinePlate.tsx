@@ -2,7 +2,8 @@ import React from "react";
 import { Container } from "@material-ui/core";
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import timeLineBg from "../../assets/timeline/timelinebg.jpg";
+// import timeLineBg from "../../assets/timeline/timelinebg.jpg";
+import graduation from "../../assets/timeline/become.png";
 import InsetList from "../Timeline/List/UpcomingLists";
 import OrientationList from "../Timeline/List/UpcomingListsTwo";
 
@@ -11,7 +12,7 @@ type TimelinePlateProps = {};
 const TimelinePlate: React.FC<TimelinePlateProps> = () => {
   return (
     <>
-      <Box sx={{ mt: "-5rem" }}>
+      <Box sx={{ mt: "-6rem" }}>
         <Container>
           <Box
             sx={{
@@ -19,22 +20,31 @@ const TimelinePlate: React.FC<TimelinePlateProps> = () => {
               maxWidth: "70%",
               margin: "auto",
               borderRadius: "1rem",
-              background: "#244A58",
-              minHeight: "300px",
-              backgroundImage: `url(${timeLineBg})`,
+              background: "#e05a36",
+              // backgroundImage: `url(${timeLineBg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              padding:"2rem"
+              padding: { md: "2rem", xs: "0" },
             }}
           >
-            <Typography
-              variant="h3"
-              sx={{ textAlign: "center", color: "#fff" }}
+            <Grid
+              container
+              sx={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
-              Upcoming Course Timeline
-            </Typography>
+              <img src={graduation} alt="" />
 
-            <Grid container sx={{padding:'1rem'}}>
+              <Typography
+                variant="h4"
+                sx={{ textAlign: "center", color: "#fff", 
+                ml:{md:"15px"} }}
+              >
+                Upcoming Course Timeline
+              </Typography>
+            </Grid>
+            <Grid container sx={{ padding: "1rem" }}>
               <Grid item xs={12} md={6}>
                 <InsetList />
               </Grid>

@@ -1,10 +1,10 @@
 import { Container } from "@material-ui/core";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import bgTimeline1 from "../../assets/timeline/bgTimeline1.png";
-import InsetList from "../Timeline/List/TimeList";
+// import InsetList from "../Timeline/List/TimeList";
 
 type TimelineProps = {};
 
@@ -17,25 +17,29 @@ const Timeline: React.FC<TimelineProps> = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          padding: "4rem 0",
+          padding: "4rem 0 8rem",
           marginTop: "4rem"
         }}
       >
         <Container>
-          <Grid container>
-            <Grid item xs={12} md={8}>
-              <Typography variant="h6" sx={{color:"#e05b38"}}>We Are Guided By Our Core Belief</Typography>
-              <Typography variant="h3">
-                Online Education Leads The World In Distance Education
+          <Grid container  sx={{justifyContent:"center"}}>
+            <Grid item xs={12} md={12}  sx={{color:"#fff", textAlign:"center"}}>
+              <Typography variant="h3">OUR GRADUATES GO 
+              <br /> ON TO ATTEND</Typography>
+              <Typography variant="h6">
+              The pie and we know flipper lives in a worl the clouds away
               </Typography>
-              <Typography variant="subtitle1">
+              <Typography variant="subtitle1" sx={{margin:"3rem 0"}}>
                 Our online courses are built in partnership with technology
                 leaders and are relevant to industry needs. Upon completing a
                 Online course, you’ll receive a verified completion certificate
                 recognized by industry leaders.
               </Typography>
             </Grid>
-            <Grid item xs={12} md={4} sx={{ paddingLeft: "" }}>
+            <Box>
+            <Button variant="contained" sx={{background:"#E05A36"}}>VIEW MORE COURSES</Button>
+            </Box>
+            {/* <Grid item xs={12} md={4} sx={{ paddingLeft: "" }}>
               <Typography variant="h5" sx={{ color: "#E05B38" }}>
                 Welcome to Become A Teacher, you have important steps
               </Typography>
@@ -50,7 +54,7 @@ const Timeline: React.FC<TimelineProps> = () => {
                 please <Link to="#" style={{color:'#e05a36'}}>Log in</Link>  to send your request
                 </Typography>
               </Box>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

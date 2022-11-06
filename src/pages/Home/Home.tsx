@@ -19,13 +19,14 @@ const Home: React.FC<{}> = () => {
         <Hero />
       </Box>
 
-      {/* TimelinePlate section */}
-      <Box sx={{}} component="section">
-        <TimelinePlate />
-      </Box>
+
             {/* Timeline section */}
             <Box sx={{}} component="section">
         <Timeline />
+      </Box>
+            {/* TimelinePlate section */}
+            <Box sx={{}} component="section">
+        <TimelinePlate />
       </Box>
       {/* Courses section */}
       <Box sx={{}} component="section">

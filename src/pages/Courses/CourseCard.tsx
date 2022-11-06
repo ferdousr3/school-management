@@ -62,7 +62,7 @@ export default function RecipeReviewCard() {
   return (
   <>
     {events.map((event: eventsData)=>
-  <Grid item xs={12} padding={2} md={3} sx={{textAlign:"left"}}>
+  <Grid item xs={12} padding={2} md={4} sx={{textAlign:"left"}}>
     <Card>
       {/* <CardHeader
         avatar={
