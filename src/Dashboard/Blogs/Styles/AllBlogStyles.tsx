@@ -69,12 +69,32 @@ const styles = sxStyles({
     flexDirection: "column",
     alignItems: "center",
     borderRadius: "6px",
+    fontFamily: `${theme.myFont} !important`,
     // border: {
     //   sm: `1px solid ${theme.extraColor.borderColor}`,
     // },
     padding: {
       sm: "1rem 2rem",
     },
+  }),
+  mainSection: (theme: Theme) => ({
+    width: "100%",
+    boxShadow: theme.myShadows.secondary,
+    backgroundColor: theme.extraColor.white,
+    // p: 1,
+  }),
+  topSection: (theme: Theme) => ({
+    py: 2,
+    display: { sm: "flex" },
+    justifyContent: "space-between",
+    alignItems: "center",
+    mx: 2,
+  }),
+  topSectionLeft: (theme: Theme) => ({
+    display: { sm: "flex" },
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: { md: "50%" },
   }),
 });
 

@@ -9,7 +9,7 @@ export enum themePalette {
   BG = "#ffffff",
   BGCOLOR = "transparent",
   GRAY = "#f6f6f6",
-  GRAY_BG = "#f7f7f7",
+  GRAY_BG = "#f2f3ef",
   GRAY_TITLE = "#333333",
   GRAY_TITLE_LITE = "#555555",
   GRAY_TITLE_DARK = "#444444",
@@ -18,7 +18,13 @@ export enum themePalette {
   LIME = "#234957",
   ORANGE = "#e05a36",
   TEXT_ERROR = "#d32f2f",
+  TEXT_ERROR1 = "#00cfe8",
+  // TEXT_ERROR2 = "#82868b",
+  TEXT_SUCCESS= "#28c76f",
+  TEXT_WARNING = "#ea5455",
+  TEXT_INFO = "#ff9f43",
   FONT_GLOBAL = "'Lato', sans-serif",
+  FONT_GLOBAL2 = "'Source Sans Pro', sans-serif",
 }
 
 const theme = createTheme({
@@ -34,8 +40,10 @@ const theme = createTheme({
     borderColor: themePalette.BORDER_COLOR,
     error: themePalette.TEXT_ERROR,
   },
+  myFont: themePalette.FONT_GLOBAL2,
   myShadows: {
     primary: `0px 0px 1px rgba(38, 78, 118, 0.35)`,
+    secondary: `0px 0px 0px 1px rgba(0,0,0,0.04)`,
   },
   palette: {
     mode: "light",
@@ -48,9 +56,22 @@ const theme = createTheme({
     secondary: {
       main: themePalette.ORANGE,
     },
+    error: {
+      main: themePalette.TEXT_ERROR,
+    },
+    warning: {
+      main: themePalette.TEXT_WARNING,
+    },
+    info: {
+      main: themePalette.TEXT_INFO,
+    },
+    success: {
+      main: themePalette.TEXT_SUCCESS,
+    },
   },
   typography: {
     fontFamily: themePalette.FONT_GLOBAL,
+
     footerTitle: {
       color: themePalette.GRAY_TITLE,
       fontSize: "1.25rem",

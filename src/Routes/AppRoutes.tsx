@@ -10,7 +10,7 @@ import BlogDetails from "../pages/Blogs/BlogDetails";
 import Events from "../pages/Events/Events";
 import AllBlogs from "../Dashboard/Blogs/AllBlogs";
 import DUserProfile from "../Dashboard/DUserProfile/DUserProfile";
-import Dashboard from "../Dashboard/Layout/Dashboard";
+// import Dashboard from "../Dashboard/Layout/Dashboard";
 import About from "../pages/About/About";
 import Blogs from "../pages/Blogs/Blogs";
 import Contact from "../pages/Contact/Contact";
@@ -19,7 +19,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import MainLayout from "./MainLyout";
-
+import DashboardLayout from "../Dashboard/Layout/DashboardLayout";
 
 const AppRoutes = () => {
   return (
@@ -31,10 +31,7 @@ const AppRoutes = () => {
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blogs />} />
           <Route path="/events" element={<Events />} />
-          <Route
-          path="/blog/:blogId"
-          element={<BlogDetails />}
-        ></Route>
+          <Route path="/blog/:blogId" element={<BlogDetails />}></Route>
           <Route path="/contact" element={<Contact />} />
           <Route path="forgotPassword" element={<PasswordReset />} />
           <Route path="/login" element={<Login />} />
@@ -46,7 +43,8 @@ const AppRoutes = () => {
           path="/dashboard"
           element={
             <RequireAuth>
-              <Dashboard />
+              {/* <Dashboard /> */}
+              <DashboardLayout />
             </RequireAuth>
           }
         >

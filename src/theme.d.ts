@@ -16,8 +16,10 @@ declare module "@mui/material/styles" {
       error: string;
       bgGray: string;
     };
+    myFont: string;
     myShadows: {
       primary: string;
+      secondary: string;
     };
   }
 
@@ -34,8 +36,10 @@ declare module "@mui/material/styles" {
       error: React.CSSProperties["color"];
       bgGray: React.CSSProperties["color"];
     };
+    myFont: React.CSSProperties["font-family"];
     myShadows: {
       primary: React.CSSProperties["box-shadow"];
+      secondary: React.CSSProperties["box-shadow"];
     };
   }
 
