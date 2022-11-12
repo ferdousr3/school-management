@@ -15,12 +15,13 @@ import { BData } from "../../utils/Types";
 import AllBlogsTableTop from "./AllBlogsTableTop";
 
 const AllBlogs: React.FC = () => {
+  // const [blogs, setBlogs] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const url = `${mainLink}/blog`;
   /**
    * data fetching with react query
    */
-  const { data, isLoading, isError, error, refetch } = useQuery<BData, Error>(
+  const { data, isLoading } = useQuery<BData, Error>(
     ["blogs"],
     () => fetch(url).then((res) => res.json())
   );
@@ -71,7 +72,6 @@ const AllBlogs: React.FC = () => {
           columns={columns}
           loading={!blog?.length}
           getRowId={(row: any) => row._id}
-         
         />
       </Paper>
       {/* add a new blog */}
