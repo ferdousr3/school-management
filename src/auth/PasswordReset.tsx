@@ -34,7 +34,6 @@ const PasswordReset = () => {
   ) => {
     await sendPasswordResetEmail(data.email);
     if (!error?.message) {
-      console.log("email error ", error?.message);
       toast.error("Email Not sent");
     } else {
       toast.success("Email Sent");

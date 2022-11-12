@@ -8,9 +8,10 @@ export function sxStyles<T extends SxStyles>(arg: T): T {
 
 const styles = sxStyles({
   dataTable: (theme: Theme) => ({
-    // "& .MuiDataGrid-root": {
-    //   border: "none",
-    // },
+    "& .MuiDataGrid-root": {
+      // border: "none",
+      height: "75vh",
+    },
     "& .MuiDataGrid-cell": {
       // fontSize: ".80rem !important",
       fontFamily: `${theme.myFont} !important`,

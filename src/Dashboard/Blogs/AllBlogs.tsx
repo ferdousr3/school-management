@@ -17,11 +17,11 @@ import AllBlogsTableTop from "./AllBlogsTableTop";
 const AllBlogs: React.FC = () => {
   // const [blogs, setBlogs] = React.useState("");
   const [open, setOpen] = React.useState(false);
-  const url = `${mainLink}/blog`;
+  const url = `${mainLink}/blogdd`;
   /**
    * data fetching with react query
    */
-  const { data, isLoading } = useQuery<BData, Error>(
+  const { data, isLoading, isError, error } = useQuery<BData, Error>(
     ["blogs"],
     () => fetch(url).then((res) => res.json())
   );
@@ -32,6 +32,13 @@ const AllBlogs: React.FC = () => {
 
   if (isLoading) {
     return <Loadings />;
+  }
+  /**
+   * if take some times for fetching data from API
+   */
+
+  if (isError) {
+    return <h1>{error?.message}</h1>;
   }
   /**
    * if any errors fetching data from API
