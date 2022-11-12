@@ -19,6 +19,7 @@ declare module "@mui/material/styles" {
     myFont: string;
     myShadows: {
       primary: string;
+      secondary: string;
     };
   }
 
@@ -38,6 +39,7 @@ declare module "@mui/material/styles" {
     myFont: React.CSSProperties["font-family"];
     myShadows: {
       primary: React.CSSProperties["box-shadow"];
+      secondary: React.CSSProperties["box-shadow"];
     };
   }
 

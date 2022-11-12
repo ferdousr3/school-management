@@ -48,3 +48,21 @@ export type {
   IBlogInputs,
   FormInputProps,
 };
+export interface BData {
+  status?: string;
+  data: {
+    total?: number;
+    page?: string | null;
+    blogs: {
+      title?: string;
+      description?: string;
+      author?: string;
+      category?: string;
+      date?: string;
+      image?: string;
+      slug?: string;
+      source?: string;
+      status?: string;
+    }[];
+  };
+}

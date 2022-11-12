@@ -79,7 +79,9 @@ const styles = sxStyles({
   }),
   mainSection: (theme: Theme) => ({
     width: "100%",
-    boxShadow: theme.myShadows.primary,
+    boxShadow: theme.myShadows.secondary,
+    backgroundColor: theme.extraColor.white,
+    // p: 1,
   }),
   topSection: (theme: Theme) => ({
     py: 2,

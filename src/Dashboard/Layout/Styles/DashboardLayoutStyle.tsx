@@ -67,7 +67,7 @@ const Drawer = styled(MuiDrawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     width: drawerWidth,
     boxSizing: "border-box",
-    backgroundColor: theme.extraColor.white,
+    backgroundColor: theme.extraColor.bgGray,
     boxShadow:'none',
   },
 }));
