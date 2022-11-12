@@ -17,7 +17,7 @@ import AllBlogsTableTop from "./AllBlogsTableTop";
 const AllBlogs: React.FC = () => {
   // const [blogs, setBlogs] = React.useState("");
   const [open, setOpen] = React.useState(false);
-  const url = `${mainLink}/blogdd`;
+  const url = `${mainLink}/blog`;
   /**
    * data fetching with react query
    */
