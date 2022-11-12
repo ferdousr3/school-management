@@ -11,7 +11,7 @@ type BlogActionButtonProps = {
 
 const BlogActionButton: React.FC<BlogActionButtonProps> = ({ params }) => {
   const handleBlogView = () => {
-    console.log(params.row.slug);
+    console.log(params?.row?.slug);
   };
   return (
     <>

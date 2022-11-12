@@ -26,7 +26,7 @@ export const columns = [
     cellClassName: "status-column--cell",
     flex: 1,
     renderCell: (params: any) => {
-      if (params.row.status === "pending") {
+      if (params?.row?.status === "pending") {
         return (
           <Button
             variant="text"
@@ -34,11 +34,11 @@ export const columns = [
             sx={{ borderRadius: "4px !important" }}
             startIcon={<AutorenewIcon />}
           >
-            {params.row.status}
+            {params?.row?.status}
           </Button>
         );
       }
-      if (params.row.status === "requested") {
+      if (params?.row?.status === "requested") {
         return (
           <Button
             variant="text"
@@ -46,7 +46,7 @@ export const columns = [
             sx={{ borderRadius: "4px !important" }}
             startIcon={<FeedbackIcon />}
           >
-            {params.row.status}
+            {params?.row?.status}
           </Button>
         );
       }
@@ -58,7 +58,7 @@ export const columns = [
           sx={{ borderRadius: "4px !important" }}
           startIcon={<CheckCircleOutlineIcon />}
         >
-          {params.row.status}
+          {params?.row?.status}
         </Button>
       );
     },
