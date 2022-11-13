@@ -26,7 +26,7 @@ import auth from "../../config/firebase.config";
 import RouteLink from "../../common/Header/RouteLink";
 import { PaperProps } from "./PaperProps";
 import data from "../../data/data";
-import Copyright from "./Copyright";
+// import Copyright from "./Copyright";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 

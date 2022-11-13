@@ -39,6 +39,13 @@ interface FormInputProps {
   setValue?: any;
   defaultValue?: string | null | undefined;
 }
+interface IEventInputs {
+  name: string;
+  place?: string;
+  time?: string;
+  date: string;
+  organizer: string;
+}
 export type {
   locationProps,
   IFormInputs,
@@ -47,6 +54,7 @@ export type {
   IContactInputs,
   IBlogInputs,
   FormInputProps,
+  IEventInputs,
 };
 export interface BData {
   status?: string;

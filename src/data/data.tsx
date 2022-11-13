@@ -206,7 +206,7 @@ const data = {
       id: 5,
       text: "Event",
       icon: <FaCalendarCheck />,
-      path: "all-Event",
+      path: "all-events",
     },
     {
       id: 6,

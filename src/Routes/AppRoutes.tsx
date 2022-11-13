@@ -4,7 +4,6 @@ import RequireAuth from "../auth/RequireAuth";
 import AddNewBlog2 from "../Dashboard/Blogs/AddNewBlogs";
 import DAllUsers from "../Dashboard/DAllUsers/DAllUsers";
 import DBanking from "../Dashboard/DBanking/DBanking";
-
 import BlogDetails from "../pages/Blogs/BlogDetails";
 // import Events from "../pages/Events/Events";
 import Events from "../pages/Events/Events";
@@ -20,6 +19,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import MainLayout from "./MainLyout";
 import DashboardLayout from "../Dashboard/Layout/DashboardLayout";
+import DsEvent from "../Dashboard/Events/Events";
 
 const AppRoutes = () => {
   return (
@@ -53,6 +53,7 @@ const AppRoutes = () => {
           <Route path="banking" element={<DBanking />} />
           <Route path="new-blog" element={<AddNewBlog2 />} />
           <Route path="all-blog" element={<AllBlogs />} />
+          <Route path="all-events" element={<DsEvent />} />
         </Route>
         {/* Dashboard part end */}
 

@@ -1,16 +1,17 @@
-import * as React from "react";
-import Paper from "@mui/material/Paper";
 import { Box } from "@mui/material";
+import Paper from "@mui/material/Paper";
+import { useQuery } from "@tanstack/react-query";
+import * as React from "react";
+import DashboardSectionTitle from "../../common/DashboardPageTitle/DashboardPageTitle";
+import DataTable from "../../common/DataTable/DataTable";
+import Loadings from "../../common/Loading/Loadings";
+import { mainLink } from "../../utils/ApiLInk";
 import AddBlogModal from "./AddBlogModal";
 import { styles } from "./Styles/AllBlogStyles";
-import Title from "./Title";
-import { useQuery } from "@tanstack/react-query";
-import { mainLink } from "../../utils/ApiLInk";
-import Loadings from "../../common/Loading/Loadings";
-import DataTable from "../../common/DataTable/DataTable";
 // import { GridColDef } from "@mui/x-data-grid";
 import { columns } from "./BlogColumns/BlogColumns";
 
+import PageTitle from "../../common/PageTitle/PageTitle";
 import { BData } from "../../utils/Types";
 import AllBlogsTableTop from "./AllBlogsTableTop";
 
@@ -58,10 +59,11 @@ const AllBlogs: React.FC = () => {
 
   return (
     <>
-      {/* page title */}
+      <PageTitle title="Blogs" />
+      {/*Section title */}
       <Box sx={{ mb: 4 }}>
-        <Title
-          title="Blogs"
+        <DashboardSectionTitle
+          sectionTitle="Blogs"
           description="List of Blogs for Future Reference"
           position="left"
         />

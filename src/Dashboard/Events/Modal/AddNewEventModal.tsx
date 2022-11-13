@@ -1,19 +1,20 @@
+import * as React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import * as React from "react";
-import DashboardSectionTitle from "../../common/DashboardPageTitle/DashboardPageTitle";
-import AddNewBlog from "./AddNewBlogs";
+import DashboardSectionTitle from "../../../common/DashboardPageTitle/DashboardPageTitle";
+import AddNewEvent from "./AddNewEvents";
+
 
 type BlogModalProps = {
   open: boolean;
   handleClose: () => void;
 };
 
-const AddBlogModal: React.FC<BlogModalProps> = ({ open, handleClose }) => {
+const AddNewEventModal: React.FC<BlogModalProps> = ({ open, handleClose }) => {
   return (
     <>
       <Dialog open={open} fullWidth maxWidth="lg">
@@ -30,7 +31,7 @@ const AddBlogModal: React.FC<BlogModalProps> = ({ open, handleClose }) => {
           <DialogTitle id="alert-dialog-title">
             {/* title component */}
             <DashboardSectionTitle
-             sectionTitle="Add New Blog"
+              sectionTitle="Add New Event"
               description="Please fill all the field with valid information"
               position="left"
             />
@@ -51,10 +52,10 @@ const AddBlogModal: React.FC<BlogModalProps> = ({ open, handleClose }) => {
         </Box>
         <DialogContent>
           {/* blog component from add new blog */}
-          <AddNewBlog />
+          <AddNewEvent />
         </DialogContent>
       </Dialog>
     </>
   );
 };
-export default AddBlogModal;
+export default AddNewEventModal;

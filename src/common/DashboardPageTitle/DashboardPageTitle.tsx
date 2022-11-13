@@ -1,13 +1,17 @@
-import React from "react";
 import { Box, Typography, useTheme } from "@mui/material";
+import React from "react";
 
 type TitleProps = {
-  title: string;
+  sectionTitle: string;
   description: string;
   position?: string;
 };
 
-const Title: React.FC<TitleProps> = ({ title, description, position }) => {
+const DashboardSectionTitle: React.FC<TitleProps> = ({
+  sectionTitle,
+  description,
+  position,
+}) => {
   const theme = useTheme();
   return (
     <>
@@ -28,10 +32,10 @@ const Title: React.FC<TitleProps> = ({ title, description, position }) => {
           },
         }}
       >
-        <Typography component="h1">{title}</Typography>
+        <Typography component="h1">{sectionTitle}</Typography>
         <Typography component="p">{description}</Typography>
       </Box>
     </>
   );
 };
-export default Title;
+export default DashboardSectionTitle;
