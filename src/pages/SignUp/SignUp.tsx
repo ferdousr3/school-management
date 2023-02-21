@@ -1,29 +1,26 @@
-import React, { FC, useEffect } from "react";
-import {
-  Box,
-  Grid,
-  // Typography,
-  Container,
-  TextField,
-  Divider,
-} from "@mui/material";
+import { yupResolver } from "@hookform/resolvers/yup";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import { LoadingButton } from "@mui/lab";
+import {
+    Box,
+    // Typography,
+    Container, Divider, Grid, TextField
+} from "@mui/material";
+import { FC, useEffect } from "react";
+import {
+    useCreateUserWithEmailAndPassword,
+    useUpdateProfile
+} from "react-firebase-hooks/auth";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import CustomLink from "../../common/CustomLink/CustomLink";
 import PageTitle from "../../common/PageTitle/PageTitle";
-import { styles } from "./Styles/SignUpStyles";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { IFormInputs } from "../../utils/Types";
-import {
-  useCreateUserWithEmailAndPassword,
-  useUpdateProfile,
-} from "react-firebase-hooks/auth";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import auth from "../../config/firebase.config";
-import { LoadingButton } from "@mui/lab";
-import { useNavigate } from "react-router-dom";
-import { SignUpSchema } from "../../utils/YupSchema";
 import { FIREBASE_ERRORS } from "../../utils/FirebaseErrors";
+import { SignUpSchema } from "../../utils/Schemas/YupSchema";
+import { IFormInputs } from "../../utils/Types";
+import { styles } from "./Styles/SignUpStyles";
 
 const SignUp: FC = () => {
   const [createUserWithEmailAndPassword, user, emailLoading, emailError] =

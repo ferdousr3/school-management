@@ -1,27 +1,27 @@
-import { FC, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AddIcon from "@mui/icons-material/Add";
 import TodayIcon from "@mui/icons-material/Today";
 import { LoadingButton } from "@mui/lab";
 import { Box, Container, Grid } from "@mui/material";
 import Chip from "@mui/material/Chip";
+import { FC, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import FormInputDefaultText from "../../common/FromInputs/FormInputDefaultText";
 import { FormInputDropdown } from "../../common/FromInputs/FormInputDropdown";
 import FormInputTextarea from "../../common/FromInputs/FormInputTextarea";
 import FormInputText from "../../common/FromInputs/FromInputText";
+import InputFileUpload from "../../common/FromInputs/InputFileUpload";
 import PageTitle from "../../common/PageTitle/PageTitle";
 import auth from "../../config/firebase.config";
-import { slugCreator } from "../../utils/SlugCreator";
-import todayDate from "../../utils/TodayDate";
-import { IBlogInputs } from "../../utils/Types";
-import { blogInputs } from "../../utils/YupBlogSchema";
-import { styles } from "./Styles/AddNewBlogStyles";
-import { defaultValues } from "./DefaultValue";
-import InputFileUpload from "../../common/FromInputs/InputFileUpload";
 import { imageBBKey, mainLink } from "../../utils/ApiLInk";
-import { toast } from "react-toastify";
+import { slugCreator } from "../../utils/Functions/SlugCreator";
+import todayDate from "../../utils/Functions/TodayDate";
+import { blogInputs } from "../../utils/Schemas/YupBlogSchema";
+import { IBlogInputs } from "../../utils/Types";
+import { defaultValues } from "./DefaultValue";
+import { styles } from "./Styles/AddNewBlogStyles";
 
 const AddNewBlog: FC = () => {
   const [user] = useAuthState(auth);

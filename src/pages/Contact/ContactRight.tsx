@@ -1,10 +1,10 @@
-import React from "react";
-import { Grid, Box, Typography, Button, TextField } from "@mui/material";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { styles } from "./Styles/ContactStyles";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import React from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { ContactForm } from "../../utils/Schemas/YupSchema";
 import { IContactInputs } from "../../utils/Types";
-import { ContactForm } from "../../utils/YupSchema";
+import { styles } from "./Styles/ContactStyles";
 
 // type ContactRightProps = {
 

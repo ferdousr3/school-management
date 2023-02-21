@@ -6,6 +6,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { RecoilRoot } from "recoil";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 const queryClient = new QueryClient();
 
@@ -13,16 +15,18 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
-          <BrowserRouter>
-            <HelmetProvider>
-              <ThemeConfig>
-                <AppRoutes />
-              </ThemeConfig>
-            </HelmetProvider>
-            <ToastContainer />
-          </BrowserRouter>
-        </RecoilRoot>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <RecoilRoot>
+            <BrowserRouter>
+              <HelmetProvider>
+                <ThemeConfig>
+                  <AppRoutes />
+                </ThemeConfig>
+              </HelmetProvider>
+              <ToastContainer />
+            </BrowserRouter>
+          </RecoilRoot>
+        </LocalizationProvider>
       </QueryClientProvider>
     </>
   );

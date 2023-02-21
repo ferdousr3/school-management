@@ -1,28 +1,23 @@
-import * as React from "react";
-import {
-  Box,
-  Grid,
-  // Typography,
-  Container,
-  TextField,
-  Divider,
-  // useTheme,
-} from "@mui/material";
+import { yupResolver } from "@hookform/resolvers/yup";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import { LoadingButton } from "@mui/lab";
+import {
+    Box,
+    // Typography,
+    Container, Divider, Grid, TextField
+} from "@mui/material";
+import * as React from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
 import CustomLink from "../../common/CustomLink/CustomLink";
 import PageTitle from "../../common/PageTitle/PageTitle";
-import { styles } from "./Styles/LoginStyles";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { IFormInputs } from "../../utils/Types";
-import { LoginSchema } from "../../utils/YupSchema";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import auth from "../../config/firebase.config";
-import { LoadingButton } from "@mui/lab";
 import { FIREBASE_ERRORS } from "../../utils/FirebaseErrors";
-import { locationProps } from "../../utils/Types";
+import { LoginSchema } from "../../utils/Schemas/YupSchema";
+import { IFormInputs, locationProps } from "../../utils/Types";
+import { styles } from "./Styles/LoginStyles";
 
 export default function Login() {
   const [signInWithEmailAndPassword, user, loading, error] =

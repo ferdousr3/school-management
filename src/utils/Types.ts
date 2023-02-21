@@ -56,6 +56,9 @@ export type {
   FormInputProps,
   IEventInputs,
 };
+/**
+ * blog data interface
+ */
 export interface BData {
   status?: string;
   data: {
@@ -71,6 +74,25 @@ export interface BData {
       slug?: string;
       source?: string;
       status?: string;
+    }[];
+  };
+}
+/**
+ * event data interface
+ */
+
+export interface EData {
+  status?: string;
+  data: {
+    total?: number;
+    page?: string | null;
+    events: {
+      name?: string;
+      organizer?: string;
+      place?: string;
+      status?: string;
+      time?: string;
+      date?: string;
     }[];
   };
 }

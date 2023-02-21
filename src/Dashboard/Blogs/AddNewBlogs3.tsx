@@ -1,27 +1,24 @@
-import { FC} from "react";
-import {
-  Box,
-  Grid,
-  // Typography,
-  Container,
-  TextField,
-  MenuItem,
-} from "@mui/material";
-import PageTitle from "../../common/PageTitle/PageTitle";
-import { styles } from "./Styles/AddNewBlogStyles";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { blogInputs } from "../../utils/YupBlogSchema";
-import auth from "../../config/firebase.config";
-import { LoadingButton } from "@mui/lab";
-import { useAuthState } from "react-firebase-hooks/auth";
-import data from "../../data/data";
-import { IBlogInputs } from "../../utils/Types";
 import AddIcon from "@mui/icons-material/Add";
-import { slugCreator } from "../../utils/SlugCreator";
-import todayDate from "../../utils/TodayDate";
-import Chip from "@mui/material/Chip";
 import TodayIcon from "@mui/icons-material/Today";
+import { LoadingButton } from "@mui/lab";
+import {
+    Box,
+    // Typography,
+    Container, Grid, MenuItem, TextField
+} from "@mui/material";
+import Chip from "@mui/material/Chip";
+import { FC } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import PageTitle from "../../common/PageTitle/PageTitle";
+import auth from "../../config/firebase.config";
+import data from "../../data/data";
+import { slugCreator } from "../../utils/Functions/SlugCreator";
+import todayDate from "../../utils/Functions/TodayDate";
+import { blogInputs } from "../../utils/Schemas/YupBlogSchema";
+import { IBlogInputs } from "../../utils/Types";
+import { styles } from "./Styles/AddNewBlogStyles";
 
 const AddNewBlog: FC = () => {
   const [user] = useAuthState(auth);

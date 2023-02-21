@@ -1,17 +1,16 @@
-import * as React from "react";
-import { Box, Container, TextField } from "@mui/material";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import PageTitle from "../common/PageTitle/PageTitle";
-import { styles } from "./Styles/PasswordResetStyles";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IPassReset } from "../utils/Types";
-import { PassReset } from "../utils/YupSchema";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { LoadingButton } from "@mui/lab";
+import { Box, Container, TextField } from "@mui/material";
 import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
-import auth from "../config/firebase.config";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import PageTitle from "../common/PageTitle/PageTitle";
+import auth from "../config/firebase.config";
 import { FIREBASE_ERRORS_PASS } from "../utils/FirebaseErrors";
+import { PassReset } from "../utils/Schemas/YupSchema";
+import { IPassReset } from "../utils/Types";
+import { styles } from "./Styles/PasswordResetStyles";
 
 const PasswordReset = () => {
   const [sendPasswordResetEmail, sending, error] =

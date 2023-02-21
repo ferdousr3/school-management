@@ -1,10 +1,8 @@
 import { FC, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AddIcon from "@mui/icons-material/Add";
-import TodayIcon from "@mui/icons-material/Today";
 import { LoadingButton } from "@mui/lab";
 import { Box, Container, Grid } from "@mui/material";
-import Chip from "@mui/material/Chip";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -14,7 +12,7 @@ import { styles } from "../Styles/AddNewEventStyles";
 import FormInputText from "../../../common/FromInputs/FromInputText";
 import { mainLink } from "../../../utils/ApiLInk";
 import { IEventInputs } from "../../../utils/Types";
-import { eventInputs } from "../../../utils/YupEventSchema";
+import { eventInputs } from "../../../utils/Schemas/YupEventSchema";
 import { defaultValues } from "../defaultValues";
 
 const AddNewEvent: FC = () => {

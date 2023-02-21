@@ -1,7 +1,7 @@
+import * as React from "react";
 import { Box } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { useQuery } from "@tanstack/react-query";
-import * as React from "react";
 import DashboardSectionTitle from "../../common/DashboardPageTitle/DashboardPageTitle";
 import DataTable from "../../common/DataTable/DataTable";
 import Loadings from "../../common/Loading/Loadings";
